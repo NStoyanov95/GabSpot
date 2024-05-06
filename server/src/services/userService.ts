@@ -2,8 +2,9 @@ import User from "../models/User";
 import { Token } from "../types/Token";
 import { UserData, UserType } from "../types/User";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
-const register = async (userData: UserData): Promise<Token> => {
+export const register = async (userData: UserData): Promise<Token> => {
   const user: UserType | null = await User.findOne({ email: userData.email });
 
   if (user) {
@@ -17,6 +18,25 @@ const register = async (userData: UserData): Promise<Token> => {
   const newUser: UserType = await User.create(userData);
 
   return generateAccessToken(newUser);
+};
+
+export const login = async (userData: UserData): Promise<Token> => {
+  const user: UserType | null = await User.findOne({ email: userData.email });
+
+  if (!user) {
+    throw new Error("Invalid email or password");
+  }
+
+  const isValid: boolean = await bcrypt.compare(
+    userData.password,
+    user.password
+  );
+
+  if (!isValid) {
+    throw new Error("Invalid email or password");
+  }
+
+  return generateAccessToken(user);
 };
 
 function generateAccessToken(user: UserType): Token {
