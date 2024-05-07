@@ -40,11 +40,10 @@ export const login = async (userData: UserData): Promise<Token> => {
 };
 
 function generateAccessToken(user: UserType): Token {
-  const secretKey = process.env.JWT_SECRET;
+  const secretKey = process.env.SECRET;
   if (!secretKey) {
     throw new Error("JWT secret key is not defined");
   }
-
   const accessToken = jwt.sign(
     {
       _id: user._id?.toString(),
