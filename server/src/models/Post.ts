@@ -13,7 +13,7 @@ interface PostDocument extends Document {
 const postSchema = new mongoose.Schema(
   {
     author: {
-      type: mongoose.Types.ObjectId,
+      type: String,
       ref: "User",
     },
     content: {
