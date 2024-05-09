@@ -1,5 +1,15 @@
 import mongoose from "mongoose";
 
+interface PostDocument extends Document {
+  author: string;
+  content: string;
+  image: string;
+  comments: string[];
+  likes: string;
+  createdAt: Date;
+  updatedAt?: Date;
+}
+
 const postSchema = new mongoose.Schema(
   {
     author: {
@@ -31,6 +41,6 @@ const postSchema = new mongoose.Schema(
   }
 );
 
-const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model<PostDocument>("Post", postSchema);
 
 export default Post;
