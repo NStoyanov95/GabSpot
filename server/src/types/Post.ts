@@ -1,14 +1,13 @@
-import { Types } from "mongoose";
-
 export interface PostType {
-  author: Types.ObjectId;
+  author: string;
   content: string;
   image: string;
-  comments: string[];
-  likes: Types.ObjectId[];
 }
 
 export interface PostData extends PostType {
+  id?: string;
+  comments: string[];
+  likes: string;
   createdAt: Date;
   updatedAt?: Date;
 }
