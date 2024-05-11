@@ -31,7 +31,7 @@ router.get("/feed", async (req: Request, res: Response) => {
   }
 });
 
-router.get("/details", async (req: Request, res: Response) => {
+router.get("/details/:postId", async (req: Request, res: Response) => {
   const postId: string = req.params.postId;
 
   try {
