@@ -8,3 +8,6 @@ export const getAllPosts = (): Promise<PostData[]> => Post.find();
 
 export const getSinglePost = (postId: string): Promise<PostData | null> =>
   Post.findById(postId);
+
+export const deletePost = (postId: string): Promise<PostData | null> =>
+  Post.findByIdAndDelete(postId);
