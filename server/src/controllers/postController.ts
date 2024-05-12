@@ -1,5 +1,10 @@
 import express, { Request, Response } from "express";
-import { create, getAllPosts, getSinglePost } from "../services/postService";
+import {
+  create,
+  deletePost,
+  getAllPosts,
+  getSinglePost,
+} from "../services/postService";
 import { PostData, PostType } from "../types/Post";
 
 const router = express.Router();
@@ -40,6 +45,20 @@ router.get("/details/:postId", async (req: Request, res: Response) => {
     if (!post) {
       return res.status(404).send({ message: "Post not found" });
     }
+    res.json(post);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: "Unknown error occurred" });
+    }
+  }
+});
+
+router.delete("/delete/:postId", async (req: Request, res: Response) => {
+  const postId: string = req.params.postId;
+  try {
+    const post: PostData | null = await deletePost(postId);
     res.json(post);
   } catch (error) {
     if (error instanceof Error) {
