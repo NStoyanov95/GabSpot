@@ -1,10 +1,5 @@
 import express, { Request, Response } from "express";
-import {
-  create,
-  deletePost,
-  getAllPosts,
-  getSinglePost,
-} from "../services/postService";
+import postService from "../services/postService";
 import { PostData, PostType } from "../types/Post";
 
 const router = express.Router();
@@ -12,7 +7,7 @@ const router = express.Router();
 router.post("/create", async (req: Request, res: Response) => {
   const postData: PostType = req.body;
   try {
-    const newPost: PostData = await create(postData);
+    const newPost: PostData = await postService.create(postData);
     res.json(newPost);
   } catch (error) {
     if (error instanceof Error) {
@@ -25,7 +20,7 @@ router.post("/create", async (req: Request, res: Response) => {
 
 router.get("/feed", async (req: Request, res: Response) => {
   try {
-    const posts: PostData[] = await getAllPosts();
+    const posts: PostData[] = await postService.getAllPosts();
     res.json(posts);
   } catch (error) {
     if (error instanceof Error) {
@@ -40,7 +35,7 @@ router.get("/details/:postId", async (req: Request, res: Response) => {
   const postId: string = req.params.postId;
 
   try {
-    const post: PostData | null = await getSinglePost(postId);
+    const post: PostData | null = await postService.getSinglePost(postId);
 
     if (!post) {
       return res.status(404).send({ message: "Post not found" });
@@ -58,7 +53,7 @@ router.get("/details/:postId", async (req: Request, res: Response) => {
 router.delete("/delete/:postId", async (req: Request, res: Response) => {
   const postId: string = req.params.postId;
   try {
-    const post: PostData | null = await deletePost(postId);
+    const post: PostData | null = await postService.deletePost(postId);
     res.json(post);
   } catch (error) {
     if (error instanceof Error) {
