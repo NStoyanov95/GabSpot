@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { UserData } from "../types/User";
 
-import { register, login } from "../services/userService";
+import userService from "../services/userService";
 
 const router = express.Router();
 
@@ -9,7 +9,9 @@ router.post("/register", async (req: Request, res: Response) => {
   const userData: UserData = req.body;
 
   try {
-    const { _id, email, username, accessToken } = await register(userData);
+    const { _id, email, username, accessToken } = await userService.register(
+      userData
+    );
     res.cookie("auth-cookie", accessToken, { httpOnly: true, secure: true });
     res.send({ email, username, _id });
   } catch (error: unknown) {
@@ -25,7 +27,9 @@ router.post("/login", async (req: Request, res: Response) => {
   const userData: UserData = req.body;
 
   try {
-    const { _id, email, username, accessToken } = await login(userData);
+    const { _id, email, username, accessToken } = await userService.login(
+      userData
+    );
     res.cookie("auth-cookie", accessToken, { httpOnly: true, secure: true });
     res.send({ email, username, _id });
   } catch (error: unknown) {

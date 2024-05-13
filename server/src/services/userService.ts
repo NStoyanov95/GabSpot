@@ -4,7 +4,7 @@ import { UserData, UserType } from "../types/User";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-export const register = async (userData: UserData): Promise<Token> => {
+const register = async (userData: UserData): Promise<Token> => {
   const user: UserType | null = await User.findOne({ email: userData.email });
 
   if (user) {
@@ -20,7 +20,7 @@ export const register = async (userData: UserData): Promise<Token> => {
   return generateAccessToken(newUser);
 };
 
-export const login = async (userData: UserData): Promise<Token> => {
+const login = async (userData: UserData): Promise<Token> => {
   const user: UserType | null = await User.findOne({ email: userData.email });
 
   if (!user) {
@@ -61,3 +61,5 @@ function generateAccessToken(user: UserType): Token {
     accessToken,
   };
 }
+
+export default { register, login };
