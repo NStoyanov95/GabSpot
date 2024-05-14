@@ -1,9 +1,27 @@
 import express, { Request, Response } from "express";
-import { UserData } from "../types/User";
+import { UserData, UserType } from "../types/User";
 
 import userService from "../services/userService";
 
 const router = express.Router();
+
+router.get("/profile/:userId", async (req: Request, res: Response) => {
+  const userId: string = req.params.userId;
+
+  try {
+    const user: UserType | null = await userService.getUser(userId);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(403).send({ error: error.message });
+    } else {
+      res.status(500).send({ error: "An unknown error occurred" });
+    }
+  }
+});
 
 router.post("/register", async (req: Request, res: Response) => {
   const userData: UserData = req.body;
