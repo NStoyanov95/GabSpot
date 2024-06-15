@@ -5,7 +5,6 @@ export interface UserType {
     username: string;
     email: string;
     password: string;
-    rePassword?: string;
 }
 
 export interface UserData {
