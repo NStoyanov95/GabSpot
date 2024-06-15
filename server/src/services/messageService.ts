@@ -4,4 +4,12 @@ import { MessageData, MessageType } from "../types/Message";
 const create = (messageData: MessageData): Promise<MessageType> =>
     Message.create(messageData);
 
-export default { create };
+const getMessagesForUser = async (
+    userId: string
+): Promise<MessageType[] | null> => {
+    return await Message.find({ to: userId })
+        .populate("from", "username email")
+        .lean();
+};
+
+export default { create, getMessagesForUser };
