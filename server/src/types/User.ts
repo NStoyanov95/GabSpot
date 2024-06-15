@@ -1,15 +1,16 @@
-import { Document, Types } from "mongoose";
+import { Types } from "mongoose";
 
-export interface UserDocument extends Document {
+export interface UserType {
     _id?: Types.ObjectId;
     username: string;
     email: string;
     password: string;
+    rePassword?: string;
 }
 
-export interface UserRegistrationData {
+export interface UserData {
     username: string;
     email: string;
     password: string;
-    rePassword: string;
+    rePassword?: string;
 }

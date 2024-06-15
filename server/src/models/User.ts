@@ -1,6 +1,11 @@
 import mongoose, { Document } from "mongoose";
 import bcrypt from "bcrypt";
-import { UserDocument } from "../types/User";
+
+interface UserDocument extends Document {
+    username: string;
+    email: string;
+    password: string;
+}
 
 const userSchema = new mongoose.Schema({
     username: {
