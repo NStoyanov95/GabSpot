@@ -7,9 +7,10 @@ const create = (messageData: MessageData): Promise<MessageType> =>
 const getMessagesForUser = async (
     userId: string
 ): Promise<MessageType[] | null> => {
-    return await Message.find({ to: userId })
-        .populate("from", "username email")
-        .lean();
+    return await Message.find({ to: userId }).populate(
+        "from",
+        "username email"
+    );
 };
 
 export default { create, getMessagesForUser };

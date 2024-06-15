@@ -20,7 +20,9 @@ router.get("/:userId", async (req: Request, res: Response) => {
         const messages: MessageType[] | null =
             await messageService.getMessagesForUser(userId);
         res.status(200).json(messages);
-    } catch (error) {}
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
 export default router;
