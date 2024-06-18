@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 const getUser = (userId: string): Promise<UserType | null> =>
-    User.findById(userId);
+    User.findById(userId).select("-password");
 
 const register = async (userData: UserData): Promise<Token> => {
     const user: UserType | null = await User.findOne({ email: userData.email });
