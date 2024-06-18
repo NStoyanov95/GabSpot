@@ -5,6 +5,15 @@ import userService from "../services/userService";
 
 const router = express.Router();
 
+router.get("/", async (req: Request, res: Response) => {
+    try {
+        const users: UserType[] | null = await userService.getAllUsers();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).send({ error: "An unknown error occurred" });
+    }
+});
+
 router.get("/profile/:userId", async (req: Request, res: Response) => {
     const userId: string = req.params.userId;
 
