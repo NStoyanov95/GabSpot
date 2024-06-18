@@ -7,6 +7,9 @@ import bcrypt from "bcrypt";
 const getUser = (userId: string): Promise<UserType | null> =>
     User.findById(userId).select("-password");
 
+const getAllUsers = (): Promise<UserType[] | null> =>
+    User.find().select("-password");
+
 const register = async (userData: UserData): Promise<Token> => {
     const user: UserType | null = await User.findOne({ email: userData.email });
 
@@ -65,4 +68,4 @@ function generateAccessToken(user: UserType): Token {
     };
 }
 
-export default { register, login, getUser };
+export default { register, login, getUser, getAllUsers };
