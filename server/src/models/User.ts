@@ -1,10 +1,12 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 import bcrypt from "bcrypt";
 
 interface UserDocument extends Document {
     username: string;
     email: string;
     password: string;
+    following: mongoose.Types.ObjectId[];
+    followers: mongoose.Types.ObjectId[];
 }
 
 const userSchema = new mongoose.Schema({
@@ -22,6 +24,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    following: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
+    followers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
 });
 
 userSchema.pre<UserDocument>("save", async function () {
