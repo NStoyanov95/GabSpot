@@ -1,0 +1,44 @@
+.site-header {
+    box-shadow: 0 0 3px 0 whitesmoke;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+}
+.site-header .site-logo {
+    color: white;
+}
+
+.functions {
+    display: flex;
+    align-items: center;
+    flex: 0 1 15%;
+}
+
+.search-bar {
+    flex: 1 0 60%;
+}
+
+.functions > .search-bar input {
+    width: 100%;
+    padding: 1em;
+    /* border-radius: 0.3em; */
+    border: none;
+    background-color: #404040;
+}
+
+.navigation-menu > .menu-list {
+    display: flex;
+    gap: 1em;
+}
+.navigation-menu > .menu-list li {
+    color: white;
+    list-style: none;
+    background-color: #404040;
+    padding: 0.6em 1em;
+    border-radius: 0.3em;
+    overflow: hidden;
+}
+.navigation-menu > .menu-list li.create-post {
+    background-color: orange;
+    color: black;
+}
