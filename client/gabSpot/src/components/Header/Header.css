@@ -35,9 +35,11 @@
     color: white;
     list-style: none;
     background-color: #404040;
-    padding: 0.6em 1em;
     border-radius: 0.3em;
     overflow: hidden;
+}
+.navigation-menu > .menu-list li a {
+    padding: 0.6em 1em;
 }
 .navigation-menu > .menu-list li.create-post {
     background-color: orange;
