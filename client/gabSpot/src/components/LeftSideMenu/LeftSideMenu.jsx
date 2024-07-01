@@ -1,6 +1,6 @@
-import AdditionalInfo from "./AdditionalInfo";
-import Menu from "./Menu";
-import ProfileInfo from "./ProfileInfo";
+import AdditionalInfo from "./AdditionalInfo/AdditionalInfo";
+import Menu from "./Menu/Menu";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import "./LeftSideMenu.css";
 
 function LeftSideMenu(params) {

@@ -1,3 +1,4 @@
+import "./AdditionalInfo.css";
 function AdditionalInfo(params) {
     return (
         <>

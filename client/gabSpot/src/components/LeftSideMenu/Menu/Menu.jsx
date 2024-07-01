@@ -1,3 +1,4 @@
+import "./Menu.css";
 function Menu(params) {
     return (
         <>

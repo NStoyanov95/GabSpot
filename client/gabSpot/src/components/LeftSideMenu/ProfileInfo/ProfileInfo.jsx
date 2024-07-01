@@ -1,3 +1,4 @@
+import "./ProfileInfo.css";
 function ProfileInfo(params) {
     return (
         <div className="profile-info">

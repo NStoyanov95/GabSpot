@@ -1,0 +1,22 @@
+.menu {
+    background-color: #323539;
+    color: white;
+    border-radius: 0.3em;
+}
+.menu > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+}
+.menu > ul > li {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    list-style: none;
+    font-size: 0.8em;
+    color: #a7a7a7;
+}
+.menu > ul > li i {
+    color: darkorange;
+}
