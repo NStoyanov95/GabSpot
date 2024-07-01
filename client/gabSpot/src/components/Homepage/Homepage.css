@@ -79,6 +79,7 @@ header h4 {
     padding: 40px 20px;
     background: #404040c2;
     border-radius: 10px;
+    box-shadow: 0 0 10px 0px darkorange;
 }
 
 .join h2 {
@@ -114,16 +115,14 @@ header h4 {
 
 .why-us {
     margin-top: 2em;
-    padding: 40px 20px;
     border-radius: 10px;
     text-align: center;
 }
 
 .reasons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 .reason {
