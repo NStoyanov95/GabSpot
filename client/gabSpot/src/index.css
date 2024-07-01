@@ -15,6 +15,7 @@ body {
 }
 a {
     text-decoration: none;
+    color: inherit;
 }
 @media (width > 800px) {
     html {
@@ -40,4 +41,21 @@ a {
     .content {
         width: 60%;
     }
+}
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: #131415;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
