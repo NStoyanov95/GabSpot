@@ -2,7 +2,7 @@ import LeftSideMenu from "../LeftSideMenu/LeftSideMenu";
 import "./Dashboard.css";
 function Dashboard() {
     return (
-        <div className="main">
+        <div className="dashboard">
             <LeftSideMenu />
         </div>
     );
