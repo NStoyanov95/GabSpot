@@ -16,10 +16,18 @@ body {
 a {
     text-decoration: none;
 }
-
 @media (width > 800px) {
     html {
         font-size: 16px;
+    }
+    .feature {
+        flex: 0 0 25%;
+    }
+    .join {
+        width: 40%;
+    }
+    .features {
+        width: 60%;
     }
 }
 @media (width > 1500px) {
@@ -27,6 +35,9 @@ a {
         font-size: 18px;
     }
     .main {
+        width: 60%;
+    }
+    .content {
         width: 60%;
     }
 }
