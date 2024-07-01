@@ -51,11 +51,14 @@ header h4 {
 .feature {
     flex: 1 0 100%;
     background: #404040c2;
-    padding: 1em;
+    padding: 0.5em;
     border-radius: 10px;
     transition: transform 0.3s;
 }
-
+.feature i {
+    color: darkorange;
+    font-size: 0.8em;
+}
 .feature:hover {
     transform: translateY(-10px);
 }

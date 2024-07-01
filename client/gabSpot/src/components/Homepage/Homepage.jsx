@@ -17,42 +17,54 @@ function Homepage() {
                 </header>
                 <section className="features">
                     <div className="feature">
-                        <h2>Connect</h2>
+                        <h2>
+                            <i className="fas fa-users"></i> Connect
+                        </h2>
                         <p>
                             Expand your network and keep close with friends and
                             family. GabSpot brings everyone together.
                         </p>
                     </div>
                     <div className="feature">
-                        <h2>Share</h2>
+                        <h2>
+                            <i className="fas fa-share-square"></i> Share
+                        </h2>
                         <p>
                             Post your stories and photos. Express yourself and
                             share your moments with the world.
                         </p>
                     </div>
                     <div className="feature">
-                        <h2>Inspire</h2>
+                        <h2>
+                            <i className="fas fa-lightbulb"></i> Inspire
+                        </h2>
                         <p>
                             Follow your favorite influencers and discover
                             trending content that fuels your passion.
                         </p>
                     </div>
                     <div className="feature">
-                        <h2>Explore</h2>
+                        <h2>
+                            <i className="fas fa-compass"></i> Explore
+                        </h2>
                         <p>
                             Delve into trending topics and join communities that
                             match your interests.
                         </p>
                     </div>
                     <div className="feature">
-                        <h2>Engage</h2>
+                        <h2>
+                            <i className="fas fa-comments"></i> Engage
+                        </h2>
                         <p>
                             React, comment, and share. Join the conversation and
                             make your voice heard.
                         </p>
                     </div>
                     <div className="feature">
-                        <h2>Customize</h2>
+                        <h2>
+                            <i className="fas fa-user-cog"></i> Customize
+                        </h2>
                         <p>
                             Personalize your profile with themes, photos, and a
                             bio that tells your story.
