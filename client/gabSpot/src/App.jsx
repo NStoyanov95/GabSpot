@@ -1,6 +1,6 @@
 import Header from "./components/Header/Header";
 import Homepage from "./components/Homepage/Homepage";
-import Main from "./components/Main/Main";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
     return (
