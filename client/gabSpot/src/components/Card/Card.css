@@ -70,7 +70,7 @@
     padding: 1em 0;
     border-top: 1px solid #a7a7a7;
     display: flex;
-    justify-content: space-around;
+
     gap: 1em;
 }
 .card-footer > button {
@@ -78,6 +78,8 @@
     border: 0;
     background-color: #40404000;
     color: #a7a7a7;
+    cursor: pointer;
+    flex: 1 0 40%;
 }
 .card-footer:first-child {
     background-color: red;
