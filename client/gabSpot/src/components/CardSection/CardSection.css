@@ -1,0 +1,14 @@
+.card-section {
+    flex: 0 0 50%;
+    padding: 0 1em;
+    color: white;
+    overflow: auto;
+    height: 90vh;
+}
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+}
