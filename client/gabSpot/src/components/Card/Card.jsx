@@ -14,7 +14,9 @@ function Card({ card }) {
                 <p>{card.description}</p>
             </div>
             <div className="content-image">
-                <img src={card.contentImg} />
+                <a href="">
+                    <img src={card.contentImg} />
+                </a>
             </div>
             <div className="likes-comments-container">
                 <p>Likes: {card.likes}</p>
