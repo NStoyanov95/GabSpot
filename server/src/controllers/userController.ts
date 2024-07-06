@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import { UserData, UserType } from "../types/User";
 
 import userService from "../services/userService";
+import { CustomRequest } from "../types/CustomRequest";
+import isAuth from "../middlewares/isAuth";
 
 const router = express.Router();
 
@@ -72,5 +74,29 @@ router.post("/login", async (req: Request, res: Response) => {
         }
     }
 });
+
+router.get(
+    "/currentUser",
+    isAuth,
+    async (req: CustomRequest, res: Response) => {
+        const userId: string | undefined = req.userId;
+        if (!userId) {
+            return res.status(404).send({ message: "User not found" });
+        }
+        try {
+            const user: UserType | null = await userService.getUser(userId);
+            if (!user) {
+                return res.status(404).send({ message: "User not found" });
+            }
+            res.send(user);
+        } catch (error) {
+            if (error instanceof Error) {
+                res.status(403).send({ error: error.message });
+            } else {
+                res.status(500).send({ error: "An unknown error occurred" });
+            }
+        }
+    }
+);
 
 export default router;
