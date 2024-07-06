@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post("/create", isAuth, async (req: CustomRequest, res: Response) => {
     const postData: PostType = req.body;
-    const userId = req.userId;
+    const userId: string | undefined = req.userId;
 
     const author: UserType | null = await User.findById(userId);
     if (!author) {
