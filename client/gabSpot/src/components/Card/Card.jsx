@@ -4,7 +4,7 @@ function Card({ post }) {
         <div className="card">
             <header className="card-header">
                 <div className="author-img">
-                    <img src={post.authorImg} />
+                    <img src={post.authorImage} />
                 </div>
                 <div className="author-name">
                     <p>{post.author}</p>
