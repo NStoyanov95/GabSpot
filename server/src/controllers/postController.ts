@@ -3,13 +3,16 @@ import postService from "../services/postService";
 import { PostData, PostType } from "../types/Post";
 import User from "../models/User";
 import { UserType } from "../types/User";
+import isAuth from "../middlewares/isAuth";
+import { CustomRequest } from "../types/CustomRequest";
 
 const router = express.Router();
 
-router.post("/create", async (req: Request, res: Response) => {
+router.post("/create", isAuth, async (req: CustomRequest, res: Response) => {
     const postData: PostType = req.body;
+    const userId = req.userId;
 
-    const author: UserType | null = await User.findById(postData.author);
+    const author: UserType | null = await User.findById(userId);
     if (!author) {
         return res.status(404).send({ message: "Author not found" });
     }
