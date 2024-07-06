@@ -4,12 +4,13 @@ import { PostData, PostType } from "../types/Post";
 
 const create = (postData: PostType): Promise<PostData> => Post.create(postData);
 
-const getAllPosts = (): Promise<PostData[]> => Post.find();
+const getAllPosts = (): Promise<PostData[]> =>
+    Post.find().sort({ createdAt: -1 });
 
 const getSinglePost = (postId: string): Promise<PostData | null> =>
-  Post.findById(postId);
+    Post.findById(postId);
 
 const deletePost = (postId: string): Promise<PostData | null> =>
-  Post.findByIdAndDelete(postId);
+    Post.findByIdAndDelete(postId);
 
 export default { create, getAllPosts, getSinglePost, deletePost };
