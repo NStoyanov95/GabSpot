@@ -39,6 +39,7 @@
     left: 3px;
     opacity: 0.7;
     transition: transform 0.3s ease-in-out;
+    cursor: text;
 }
 
 .field.text input:not(:placeholder-shown) + label {

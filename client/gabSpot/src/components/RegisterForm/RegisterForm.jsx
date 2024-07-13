@@ -62,7 +62,7 @@ function RegisterForm() {
                             <input
                                 type="text"
                                 name="firstName"
-                                id="first-name"
+                                id="firstName"
                                 placeholder="First Name"
                                 onChange={changeHandler}
                                 value={formData.firstName}
@@ -73,7 +73,7 @@ function RegisterForm() {
                             <input
                                 type="text"
                                 name="lastName"
-                                id="last-name"
+                                id="lastName"
                                 placeholder="Last Name"
                                 onChange={changeHandler}
                                 value={formData.lastName}
@@ -95,12 +95,12 @@ function RegisterForm() {
                             <input
                                 type="text"
                                 name="profileImage"
-                                id="profile-image"
+                                id="profileImage"
                                 placeholder="profile image"
                                 onChange={changeHandler}
                                 value={formData.profileImage}
                             />
-                            <label htmlFor="profile-image">
+                            <label htmlFor="profileImage">
                                 Profile image URL
                             </label>
                         </div>
@@ -119,7 +119,7 @@ function RegisterForm() {
                             <input
                                 type="password"
                                 name="rePassword"
-                                id="repeat-password"
+                                id="rePassword"
                                 placeholder="Confirm Password"
                                 onChange={changeHandler}
                                 value={formData.rePassword}
