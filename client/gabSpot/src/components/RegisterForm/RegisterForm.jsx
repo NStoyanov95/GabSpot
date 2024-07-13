@@ -23,7 +23,19 @@ function RegisterForm() {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        await register(formData);
+        const res = await register(formData);
+
+        if (!res.error) {
+            setFormData({
+                username: "",
+                firstName: "",
+                lastName: "",
+                email: "",
+                profileImage: "",
+                password: "",
+                rePassword: "",
+            });
+        }
 
         console.log(formData);
     };
