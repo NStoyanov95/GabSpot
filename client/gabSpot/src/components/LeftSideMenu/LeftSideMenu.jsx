@@ -1,14 +1,12 @@
-import AdditionalInfo from "./AdditionalInfo/AdditionalInfo";
 import Menu from "./Menu/Menu";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import "./LeftSideMenu.css";
+import style from "./LeftSideMenu.module.css";
 
 function LeftSideMenu(params) {
     return (
         <>
-            <div className="left-side-menu">
+            <div className={style.leftSideMenu}>
                 <ProfileInfo />
-                <AdditionalInfo />
                 <Menu />
             </div>
         </>

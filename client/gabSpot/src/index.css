@@ -45,18 +45,6 @@ input {
     .card {
         width: 90%;
     }
-    .left-side-menu {
-        display: flex;
-    }
-    .feature {
-        flex: 0 0 30%;
-    }
-    .join {
-        width: 40%;
-    }
-    .features {
-        width: 60%;
-    }
 }
 @media (width > 1500px) {
     html {

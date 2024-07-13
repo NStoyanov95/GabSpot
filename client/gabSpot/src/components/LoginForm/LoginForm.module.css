@@ -1,26 +1,29 @@
-.form-container {
+.formContainer {
     color: orange;
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     background-color: #eee;
     box-shadow: 0 0 5px 1px orange;
 }
 
-.form-wrapper {
+.formWrapper {
     background-color: #323539;
 }
-.register-form {
+
+.loginForm {
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
 }
-.register-form input {
+
+.loginForm input {
     border: none;
 }
+
 .field {
     display: flex;
     position: relative;
@@ -28,11 +31,12 @@
     color: rgb(129, 128, 128);
     width: 70%;
 }
+
 .field > input:focus {
     outline: none;
 }
 
-.field.text label {
+.fieldTextLabel {
     display: block;
     position: absolute;
     top: 0;
@@ -42,24 +46,25 @@
     cursor: text;
 }
 
-.field.text input:not(:placeholder-shown) + label {
+.fieldText input:not(:placeholder-shown) + label {
     transform: translateY(-1rem);
     font-size: 0.8rem;
     opacity: 1;
     font-weight: bold;
 }
 
-.field.text input::placeholder {
+.fieldText input::placeholder {
     color: transparent;
 }
-.field input {
+
+.loginForm .fieldInput {
     width: 100%;
     color: white;
     background-color: rgba(0, 0, 0, 0);
     border-bottom: 1px solid orange;
 }
 
-.submit-btn {
+.submitBtn {
     display: block;
     padding: 0.5em 1em;
     border-radius: 0.3em;
@@ -67,11 +72,13 @@
     cursor: pointer;
     color: black;
 }
+
 .loginRedirect {
     font-size: 0.8em;
     font-style: italic;
     color: #ccc;
 }
+
 .loginRedirect a {
     display: inline-block;
     color: orange;

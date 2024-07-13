@@ -1,10 +1,11 @@
-.profile-info {
+.profileInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
 }
-.profile-info img {
+
+.profileInfo img {
     border: 3px solid rgb(215, 68, 134);
     max-width: 100px;
     border-radius: 50%;
@@ -12,10 +13,12 @@
     background-position: center;
     background-size: cover;
 }
-.profile-name {
+
+.profileName {
     position: relative;
 }
-.profile-name::after {
+
+.profileName::after {
     position: absolute;
     top: -10px;
     right: -23px;
@@ -28,4 +31,19 @@
     text-align: center;
     line-height: 1em;
     color: white;
+}
+
+.additionalInfo {
+    background-color: #323539;
+    padding: 1em;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: white;
+    border-radius: 0.3em;
+}
+
+.additionalInfo .columns p:nth-child(2) {
+    font-size: 0.8em;
+    color: #a7a7a7;
 }

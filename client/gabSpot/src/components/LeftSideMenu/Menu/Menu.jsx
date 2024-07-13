@@ -1,8 +1,8 @@
-import "./Menu.css";
+import style from "./Menu.module.css";
 function Menu(params) {
     return (
         <>
-            <div className="menu">
+            <div className={style.menu}>
                 <ul>
                     <li>
                         <a href="#">

@@ -174,3 +174,15 @@ header h4 {
         opacity: 1;
     }
 }
+
+@media (width > 800px) {
+    .feature {
+        flex: 0 0 30%;
+    }
+    .join {
+        width: 40%;
+    }
+    .features {
+        width: 60%;
+    }
+}
