@@ -1,0 +1,78 @@
+.form-container {
+    color: orange;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #eee;
+    box-shadow: 0 0 5px 1px orange;
+}
+
+.form-wrapper {
+    background-color: #323539;
+}
+.register-form {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+.register-form input {
+    border: none;
+}
+.field {
+    display: flex;
+    position: relative;
+    flex-direction: column-reverse;
+    color: rgb(129, 128, 128);
+    width: 70%;
+}
+.field > input:focus {
+    outline: none;
+}
+
+.field.text label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 3px;
+    opacity: 0.7;
+    transition: transform 0.3s ease-in-out;
+}
+
+.field.text input:not(:placeholder-shown) + label {
+    transform: translateY(-1.2rem);
+    font-size: 0.9rem;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.field.text input::placeholder {
+    color: transparent;
+}
+.field input {
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px solid orange;
+}
+
+.submit-btn {
+    display: block;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    background-color: orange;
+    cursor: pointer;
+    color: black;
+}
+.loginRedirect {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #ccc;
+}
+.loginRedirect a {
+    display: inline-block;
+    color: orange;
+    padding: 0em 0.5em;
+}
