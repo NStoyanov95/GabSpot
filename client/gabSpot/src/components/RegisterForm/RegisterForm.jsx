@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./RegisterForm.css";
+
+import { register } from "../../services/userService";
 function RegisterForm() {
     const [formData, setFormData] = useState({
         username: "",
@@ -8,7 +10,7 @@ function RegisterForm() {
         email: "",
         profileImage: "",
         password: "",
-        repeatPassword: "",
+        rePassword: "",
     });
 
     const changeHandler = (e) => {
@@ -18,19 +20,12 @@ function RegisterForm() {
         }));
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
+        await register(formData);
+
         console.log(formData);
-        setFormData({
-            username: "",
-            firstName: "",
-            lastName: "",
-            email: "",
-            profileImage: "",
-            password: "",
-            repeatPassword: "",
-        });
     };
     return (
         <>
@@ -111,15 +106,13 @@ function RegisterForm() {
                         <div className="field text repeat-password">
                             <input
                                 type="password"
-                                name="repeatPassword"
+                                name="rePassword"
                                 id="repeat-password"
                                 placeholder="Confirm Password"
                                 onChange={changeHandler}
-                                value={formData.repeatPassword}
+                                value={formData.rePassword}
                             />
-                            <label htmlFor="repeatPassword">
-                                Confirm Password
-                            </label>
+                            <label htmlFor="rePassword">Confirm Password</label>
                         </div>
                         <input
                             type="submit"
