@@ -2,6 +2,7 @@ import Header from "./components/Header/Header";
 import Homepage from "./components/Homepage/Homepage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 function App() {
     return (
@@ -9,7 +10,8 @@ function App() {
             <Header />
             {/* <Homepage /> */}
             {/* <Dashboard /> */}
-            <RegisterForm />
+            {/* <RegisterForm /> */}
+            <LoginForm />
         </>
     );
 }
