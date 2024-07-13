@@ -8,11 +8,6 @@ function Header() {
                         <h2>GapSpot^^</h2>
                     </a>
                 </div>
-                <div className="functions">
-                    <div className="search-bar">
-                        <input type="text" placeholder="Search..." />
-                    </div>
-                </div>
                 <div className="navigation-menu">
                     <ul className="menu-list">
                         <li className="create-post">
