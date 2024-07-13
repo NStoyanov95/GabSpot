@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./LoginForm.css";
+import { login } from "../../services/userService";
 function LoginForm() {
     const [formData, setFormData] = useState({
         email: "",
@@ -12,7 +13,20 @@ function LoginForm() {
         }));
     };
 
-    const submitHandler = (e) => {};
+    const submitHandler = async (e) => {
+        e.preventDefault();
+
+        const user = await login(formData);
+
+        if (!user.error) {
+            setFormData({
+                email: "",
+                password: "",
+            });
+        }
+
+        console.log(user);
+    };
 
     return (
         <>
