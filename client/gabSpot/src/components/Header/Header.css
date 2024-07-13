@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     background-color: black;
+    margin-bottom: 1em;
 }
 .site-header .site-logo {
     color: white;
