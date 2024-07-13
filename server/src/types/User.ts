@@ -3,6 +3,8 @@ import { Schema, Types } from "mongoose";
 export interface UserType {
     _id?: Types.ObjectId;
     username: string;
+    firstName: string;
+    lastName: string;
     profileImage: string;
     email: string;
     password: string;
@@ -12,6 +14,8 @@ export interface UserType {
 
 export interface UserData {
     username: string;
+    firstName: string;
+    lastName: string;
     profileImage: string;
     email: string;
     password: string;
