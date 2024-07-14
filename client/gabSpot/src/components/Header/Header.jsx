@@ -12,36 +12,22 @@ function Header() {
                 <div className={styles["navigation-menu"]}>
                     <ul className={styles["menu-list"]}>
                         <li className={styles["create-post"]}>
-                            <a href="">
-                                <i className="fas fa-pencil-alt"></i>
-                            </a>
+                            <a href="">Create Post</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i className="fas fa-home"></i>
-                            </a>
+                            <a href="">Home</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i className="fas fa-tachometer-alt"></i>
-                            </a>
+                            <a href="">Dashboard</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i className="fas fa-comment"></i>
-                            </a>
+                            <a href="">Messages</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i className="fas fa-user"></i>
-                            </a>
+                            <a href="">Profile</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i
-                                    className={`fas fa-sign-out-alt ${styles["logout-icon"]}`}
-                                ></i>
-                            </a>
+                            <a href="">Logout</a>
                         </li>
                     </ul>
                 </div>

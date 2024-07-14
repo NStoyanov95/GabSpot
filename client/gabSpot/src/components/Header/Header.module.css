@@ -16,6 +16,11 @@
     flex: 0 1 15%;
 }
 
+.navigation-menu {
+    display: flex;
+    align-items: center;
+}
+
 .navigation-menu > .menu-list {
     display: flex;
     gap: 1em;
@@ -29,6 +34,7 @@
 }
 .navigation-menu > .menu-list li a {
     padding: 0.6em 1em;
+    font-size: 0.8em;
 }
 .navigation-menu > .menu-list li.create-post {
     background-color: orange;
