@@ -1,0 +1,84 @@
+.formWrapper {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/007/278/150/non_2x/dark-background-abstract-with-light-effect-vector.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    padding: 1em;
+    align-items: center;
+}
+.leftSide {
+    flex: 0 0 30%;
+    text-align: center;
+    padding-bottom: 2em;
+}
+.leftSide p {
+    padding-top: 1em;
+    font-style: italic;
+    font-size: 0.8em;
+}
+.rightSide {
+    flex: 0 0 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+.createPostForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    box-shadow: 0 0 2px 0 rgba(255, 166, 0, 0.353);
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.466);
+    border-radius: 0.3em;
+}
+
+.createPostForm .field {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+.createPostForm input,
+.createPostForm textarea {
+    width: 100%;
+    background-color: #404040;
+    border-color: black;
+    border-radius: 0.3em;
+    color: white;
+}
+.createPostForm input {
+    padding: 0.5em;
+}
+.createPostForm textarea {
+    padding: 3em;
+}
+
+.createPostForm .submitBtn {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.createPostForm input[type="text"]:focus,
+.createPostForm textarea:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+@media (width > 800px) {
+    .formWrapper {
+        display: flex;
+        padding: 4em;
+    }
+    .leftSide {
+        text-align: left;
+        padding: 0;
+    }
+}

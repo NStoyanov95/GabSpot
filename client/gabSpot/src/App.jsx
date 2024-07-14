@@ -9,11 +9,11 @@ function App() {
     return (
         <>
             <Header />
-            <Homepage />
+            {/* <Homepage /> */}
             {/* <Dashboard /> */}
             {/* <RegisterForm /> */}
             {/* <LoginForm /> */}
-            {/* <CreatePostForm /> */}
+            <CreatePostForm />
         </>
     );
 }
