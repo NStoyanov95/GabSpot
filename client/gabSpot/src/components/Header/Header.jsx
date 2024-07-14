@@ -5,7 +5,7 @@ function Header() {
         <>
             <header className={styles["site-header"]}>
                 <div className={styles["site-logo"]}>
-                    <a href="">
+                    <a href="/">
                         <h2>GapSpot^^</h2>
                     </a>
                 </div>
@@ -15,9 +15,6 @@ function Header() {
                             <a href="">Create Post</a>
                         </li>
                         <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
                             <a href="">Dashboard</a>
                         </li>
                         <li>
@@ -25,6 +22,12 @@ function Header() {
                         </li>
                         <li>
                             <a href="">Profile</a>
+                        </li>
+                        <li>
+                            <a href="">Login</a>
+                        </li>
+                        <li>
+                            <a href="">Register</a>
                         </li>
                         <li>
                             <a href="">Logout</a>
