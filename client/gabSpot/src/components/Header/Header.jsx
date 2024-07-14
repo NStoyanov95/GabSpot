@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -5,32 +6,32 @@ function Header() {
         <>
             <header className={styles["site-header"]}>
                 <div className={styles["site-logo"]}>
-                    <a href="/">
+                    <Link to="/">
                         <h2>GapSpot^^</h2>
-                    </a>
+                    </Link>
                 </div>
                 <div className={styles["navigation-menu"]}>
                     <ul className={styles["menu-list"]}>
                         <li className={styles["create-post"]}>
-                            <a href="">Create Post</a>
+                            <Link to="/createpost">Create Post</Link>
                         </li>
                         <li>
-                            <a href="">Dashboard</a>
+                            <Link to="/dashboard">Dashboard</Link>
                         </li>
                         <li>
-                            <a href="">Messages</a>
+                            <Link to="">Messages</Link>
                         </li>
                         <li>
-                            <a href="">Profile</a>
+                            <Link to="">Profile</Link>
                         </li>
                         <li>
-                            <a href="">Login</a>
+                            <Link to="/login">Login</Link>
                         </li>
                         <li>
-                            <a href="">Register</a>
+                            <Link to="/register">Register</Link>
                         </li>
                         <li>
-                            <a href="">Logout</a>
+                            <Link to="">Logout</Link>
                         </li>
                     </ul>
                 </div>
