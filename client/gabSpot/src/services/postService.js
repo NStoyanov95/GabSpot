@@ -3,3 +3,15 @@ export const getAllPosts = async () => {
     const data = await res.json();
     return data;
 };
+
+export const createPost = async (formData) => {
+    const res = await fetch("http://localhost:3030/posts/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    return data;
+};

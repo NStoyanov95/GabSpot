@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./CreatePostForm.module.css";
+import { createPost } from "../../services/postService";
 
 function CreatePostForm() {
     const [formData, setFormData] = useState({
@@ -17,6 +18,9 @@ function CreatePostForm() {
     const submitHandler = async (e) => {
         e.preventDefault();
         console.log(formData);
+
+        const res = await createPost(formData);
+
         setFormData({
             imageUrl: "",
             content: "",
