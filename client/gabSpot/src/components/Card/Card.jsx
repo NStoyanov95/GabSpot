@@ -14,9 +14,7 @@ function Card({ post }) {
                 <p>{post.content}</p>
             </div>
             <div className="content-image">
-                <a href="">
-                    <img src={post.image} />
-                </a>
+                <img src={post.image} />
             </div>
             <div className="likes-comments-container">
                 <p>Likes: {post.likes.length}</p>
