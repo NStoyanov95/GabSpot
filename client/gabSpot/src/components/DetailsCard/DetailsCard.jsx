@@ -13,7 +13,7 @@ function DetailsCard() {
                             className={styles.avatar}
                         />
                         <div className={styles["user-info"]}>
-                            <h2 className={styles.username}>John Doe</h2>
+                            <h4 className={styles.username}>John Doe</h4>
                             <p className={styles["post-date"]}>
                                 Posted on July 13, 2024
                             </p>
@@ -43,7 +43,7 @@ function DetailsCard() {
                     </div>
                 </div>
                 <div className={styles["comments-section"]}>
-                    <h3>Comments</h3>
+                    <h4>Comments</h4>
                     <div className={styles.comment}>
                         <div className={styles["comment-content"]}>
                             <p className={styles["comment-text"]}>

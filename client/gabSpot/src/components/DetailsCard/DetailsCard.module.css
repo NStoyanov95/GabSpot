@@ -1,13 +1,13 @@
 .post-container {
-    padding: 2em;
+    padding: 1em;
 }
 .post-card {
     margin: 0 auto;
     background-color: #323539;
     border-radius: 10px;
     color: white;
-    box-shadow: 0 0 10px 0 rgba(255, 166, 0, 0.2);
-    max-width: 500px;
+    box-shadow: 0 0 10px 0 rgba(241, 175, 75, 0.387);
+    max-width: 600px;
     width: 100%;
 }
 
@@ -35,15 +35,16 @@
 
 .username {
     margin: 0;
-    font-size: 1.2em;
 }
 
 .post-date {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.7em;
+    color: silver;
 }
 
 .post-content {
+    font-size: 0.9em;
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -69,7 +70,7 @@
     color: black;
     border: none;
     border-radius: 5px;
-    padding: 0.5em;
+    padding: 0.7em;
     cursor: pointer;
 }
 
@@ -95,12 +96,10 @@
 
 .comments-section {
     padding: 1em 2em;
-    border-top: 1px solid #eee;
 }
 
 .comments-section h3 {
-    margin: 0 0 1em 0;
-    font-size: 1.2em;
+    margin: 0 0 1rem 0;
     color: white;
 }
 
@@ -154,7 +153,6 @@
     color: black;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .comment-form button:hover {
