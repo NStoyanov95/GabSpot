@@ -1,0 +1,159 @@
+.post-card {
+    margin: 0 auto;
+    background-color: #323539;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 0 10px 0 silver;
+    max-width: 800px;
+    width: 100%;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.post-header-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.post-date {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.post-content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-content img {
+    max-width: 100%;
+    margin-top: 1em;
+}
+
+.post-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.like-btn,
+.edit-btn,
+.delete-btn {
+    background-color: orange;
+    flex: 1 0 30%;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.like-btn:hover {
+    background-color: #0056b3;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.comments-section {
+    padding: 1em 3em;
+    border-top: 1px solid #eee;
+}
+
+.comments-section h3 {
+    margin: 0 0 1em 0;
+    font-size: 1.2em;
+    color: white;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    color: black;
+}
+
+.comment-content {
+    padding: 1em;
+    border-radius: 5px;
+    width: 100%;
+    position: relative;
+    background-color: #ccc;
+}
+
+.comment-text {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.comment .delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 0.8em;
+    padding: 0.3em 0.5em;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form textarea {
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 1em;
+    background-color: #ccc;
+}
+
+.comment-form button {
+    padding: 0.75em;
+    border: none;
+    border-radius: 5px;
+    background-color: orange;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
+}
