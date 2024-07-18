@@ -15,3 +15,9 @@ export const createPost = async (formData) => {
     const data = await res.json();
     return data;
 };
+
+export const getSinglePost = async (postId) => {
+    const res = await fetch(`http://localhost:3030/posts/details/${postId}`);
+    const data = await res.json();
+    return data;
+};
