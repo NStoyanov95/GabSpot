@@ -75,7 +75,7 @@
 }
 
 .edit-btn {
-    background-color: #ffc107;
+    background-color: silver;
 }
 
 .delete-btn {
@@ -87,7 +87,7 @@
 }
 
 .edit-btn:hover {
-    background-color: #e0a800;
+    background-color: rgb(159, 158, 158);
 }
 
 .delete-btn:hover {
