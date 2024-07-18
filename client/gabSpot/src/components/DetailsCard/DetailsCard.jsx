@@ -8,6 +8,19 @@ function DetailsCard() {
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
+    const [comment, setComment] = useState("");
+
+    const changeHandler = (e) => {
+        // Send Comment to the backend !
+        setComment(e.target.value);
+        console.log(e.target.value);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(`the comment is ${comment}`);
+    };
 
     useEffect(() => {
         (async () => {
@@ -56,8 +69,14 @@ function DetailsCard() {
                         <Comments key={comment} comment={comment} />
                     ))}
                     <form className={styles["comment-form"]}>
-                        <textarea placeholder="Add a comment..." />
-                        <button type="submit">Post Comment</button>
+                        <textarea
+                            placeholder="Add a comment..."
+                            onChange={changeHandler}
+                            value={comment}
+                        />
+                        <button type="submit" onClick={onSubmit}>
+                            Post Comment
+                        </button>
                     </form>
                 </div>
             </div>
