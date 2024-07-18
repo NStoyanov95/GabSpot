@@ -49,9 +49,6 @@ input {
         display: flex;
         width: 90%;
     }
-    .card {
-        width: 90%;
-    }
 }
 @media (width > 1500px) {
     html {

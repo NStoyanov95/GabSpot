@@ -24,7 +24,8 @@
     right: 5px;
     font-size: 0.8em;
     padding: 0.3em 0.5em;
-    background-color: #dc3545;
+    background-color: #a53641db;
+    color: silver;
     cursor: pointer;
     border: none;
 }

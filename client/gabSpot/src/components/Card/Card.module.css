@@ -79,3 +79,9 @@
 .card-footer button:hover {
     background-color: #424141f5;
 }
+
+@media (max-width: 800px) {
+    .card {
+        width: 90%;
+    }
+}

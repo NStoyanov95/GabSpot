@@ -1,34 +1,34 @@
 import { Link } from "react-router-dom";
-import "./Card.css";
+import styles from "./Card.module.css";
 function Card({ post }) {
     return (
-        <div className="card">
-            <header className="card-header">
-                <div className="author-img">
+        <div className={styles["card"]}>
+            <header className={styles["card-header"]}>
+                <div className={styles["author-img"]}>
                     <img src={post.authorImage} />
                 </div>
-                <div className="author-name">
+                <div className={styles["author-name"]}>
                     <p>{post.author}</p>
                 </div>
             </header>
-            <div className="description">
+            <div className={styles["description"]}>
                 <p>{post.content}</p>
             </div>
-            <div className="content-image">
+            <div className={styles["content-image"]}>
                 <Link to={`/details/${post._id}`}>
                     <img src={post.image} />
                 </Link>
             </div>
-            <div className="likes-comments-container">
+            <div className={styles["likes-comments-container"]}>
                 <p>Likes: {post.likes.length}</p>
                 <p>Comments: {post.comments.length}</p>
             </div>
-            <footer className="card-footer">
+            <footer className={styles["card-footer"]}>
                 <button>
-                    <i className="fas fa-thumbs-up"></i>
+                    <i className={styles["fas fa-thumbs-up"]}></i>
                 </button>
                 <button>
-                    <i className="fas fa-comment"></i>
+                    <i className={styles["fas fa-comment"]}></i>
                 </button>
             </footer>
         </div>
