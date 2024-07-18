@@ -1,4 +1,3 @@
-import { get } from "http";
 import Post from "../models/Post";
 import { PostData, PostType } from "../types/Post";
 
@@ -13,4 +12,10 @@ const getSinglePost = (postId: string): Promise<PostData | null> =>
 const deletePost = (postId: string): Promise<PostData | null> =>
     Post.findByIdAndDelete(postId);
 
-export default { create, getAllPosts, getSinglePost, deletePost };
+const commentPost = (
+    postId: string,
+    comment: string
+): Promise<PostData | null> =>
+    Post.findByIdAndUpdate(postId, { $push: { comments: comment } });
+
+export default { create, getAllPosts, getSinglePost, deletePost, commentPost };
