@@ -25,7 +25,7 @@ function Card({ post }) {
             </div>
             <footer className="card-footer">
                 <button>
-                    <i className="fas fa-heart"></i>
+                    <i className="fas fa-thumbs-up"></i>
                 </button>
                 <button>
                     <i className="fas fa-comment"></i>

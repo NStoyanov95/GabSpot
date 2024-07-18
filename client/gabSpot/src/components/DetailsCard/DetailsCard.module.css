@@ -68,29 +68,23 @@
 .like-btn,
 .edit-btn,
 .delete-btn {
-    background-color: orange;
+    background-color: rgba(0, 0, 0, 0);
     flex: 1 0 30%;
-    color: black;
+    color: silver;
     border: none;
-    border-radius: 5px;
     padding: 0.7em;
     cursor: pointer;
-}
-
-.edit-btn {
-    background-color: silver;
+    box-shadow: 0 0 3px 0 rgba(242, 242, 242, 0.1);
 }
 
 .delete-btn {
     background-color: #dc3545;
+    color: black;
 }
 
+.edit-btn:hover,
 .like-btn:hover {
-    background-color: darkorange;
-}
-
-.edit-btn:hover {
-    background-color: rgb(159, 158, 158);
+    background-color: #424141f5;
 }
 
 .delete-btn:hover {

@@ -10,7 +10,7 @@
     border-radius: 5px;
     width: 100%;
     position: relative;
-    background-color: #ccc;
+    background-color: #a7a7a7;
 }
 
 .comment-text {
@@ -20,12 +20,13 @@
 
 .delete-btn {
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: 5px;
     font-size: 0.8em;
     padding: 0.3em 0.5em;
     background-color: #dc3545;
     cursor: pointer;
+    border: none;
 }
 .delete-btn:hover {
     background-color: #c82333;
