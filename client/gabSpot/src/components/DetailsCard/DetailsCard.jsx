@@ -1,26 +1,14 @@
 import React, { useEffect } from "react";
 import styles from "./DetailsCard.module.css";
 import { useState } from "react";
-import { getSinglePost } from "../../services/postService";
+import { getSinglePost, postComment } from "../../services/postService";
 import { useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 function DetailsCard() {
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
-    const [comment, setComment] = useState("");
-
-    const changeHandler = (e) => {
-        // Send Comment to the backend !
-        setComment(e.target.value);
-        console.log(e.target.value);
-    };
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        console.log(`the comment is ${comment}`);
-    };
+    const [newComment, setNewComment] = useState("");
 
     useEffect(() => {
         (async () => {
@@ -29,6 +17,21 @@ function DetailsCard() {
             setComments(post.comments);
         })();
     }, []);
+
+    const changeHandler = (e) => {
+        setNewComment(e.target.value);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        (async () => {
+            const result = await postComment(postId, newComment);
+            setComments(result.comments);
+            setComments((comments) => [...comments, newComment]);
+            setNewComment("");
+        })();
+    };
 
     return (
         <div className={styles["post-container"]}>
@@ -72,7 +75,7 @@ function DetailsCard() {
                         <textarea
                             placeholder="Add a comment..."
                             onChange={changeHandler}
-                            value={comment}
+                            value={newComment}
                         />
                         <button type="submit" onClick={onSubmit}>
                             Post Comment
