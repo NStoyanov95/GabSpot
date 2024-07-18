@@ -21,3 +21,15 @@ export const getSinglePost = async (postId) => {
     const data = await res.json();
     return data;
 };
+
+export const postComment = async (postId, comment) => {
+    const res = await fetch(`http://localhost:3030/posts/comment/${postId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ comment }),
+    });
+    const data = await res.json();
+    return data;
+};
