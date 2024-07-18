@@ -25,10 +25,10 @@ function Card({ post }) {
             </div>
             <footer className={styles["card-footer"]}>
                 <button>
-                    <i className={styles["fas fa-thumbs-up"]}></i>
+                    <i className="fas fa-thumbs-up"></i>
                 </button>
                 <button>
-                    <i className={styles["fas fa-comment"]}></i>
+                    <i className="fas fa-comment"></i>
                 </button>
             </footer>
         </div>
