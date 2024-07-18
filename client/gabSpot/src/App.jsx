@@ -13,7 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/details/:id" element={<DetailsCard />} />
+                <Route path="/details/:postId" element={<DetailsCard />} />
                 <Route path="/register" element={<RegisterForm />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/createpost" element={<CreatePostForm />} />
