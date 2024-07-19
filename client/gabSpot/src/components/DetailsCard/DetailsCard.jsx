@@ -1,14 +1,19 @@
 import React, { useEffect } from "react";
 import styles from "./DetailsCard.module.css";
 import { useState } from "react";
-import { getSinglePost, postComment } from "../../services/postService";
-import { useParams } from "react-router-dom";
+import {
+    deletePost,
+    getSinglePost,
+    postComment,
+} from "../../services/postService";
+import { useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 function DetailsCard() {
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -22,15 +27,17 @@ function DetailsCard() {
         setNewComment(e.target.value);
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+        const result = await postComment(postId, newComment);
+        setComments(result.comments);
+        setComments((comments) => [...comments, newComment]);
+        setNewComment("");
+    };
 
-        (async () => {
-            const result = await postComment(postId, newComment);
-            setComments(result.comments);
-            setComments((comments) => [...comments, newComment]);
-            setNewComment("");
-        })();
+    const onPostDelete = async () => {
+        const deletedPost = await deletePost(postId);
+        navigate("/dashboard");
     };
 
     return (
@@ -64,7 +71,10 @@ function DetailsCard() {
                             <button className={styles["edit-btn"]}>
                                 <i className="fas fa-edit" /> Edit
                             </button>
-                            <button className={styles["delete-btn"]}>
+                            <button
+                                className={styles["delete-btn"]}
+                                onClick={onPostDelete}
+                            >
                                 <i className="fas fa-trash" /> Delete
                             </button>
                         </div>
