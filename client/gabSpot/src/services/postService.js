@@ -33,3 +33,14 @@ export const postComment = async (postId, comment) => {
     const data = await res.json();
     return data;
 };
+
+export const deletePost = async (postId) => {
+    const res = await fetch(`http://localhost:3030/posts/delete/${postId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    const data = await res.json();
+    return data;
+};
