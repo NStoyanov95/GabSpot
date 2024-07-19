@@ -2,13 +2,19 @@
     padding: 1em;
 }
 .post-card {
+    display: flex;
+    padding: 0.5em;
     margin: 0 auto;
-    background-color: #323539;
+    background-color: rgba(0, 0, 0, 0.305);
     border-radius: 10px;
     color: white;
     box-shadow: 0 0 10px 0 rgba(241, 175, 75, 0.387);
-    max-width: 600px;
+    max-width: 1000px;
     width: 100%;
+    align-items: center;
+}
+.left-section {
+    flex: 1 0 60%;
 }
 
 .post-header {
@@ -55,7 +61,7 @@
 .post-content img {
     max-width: 100%;
     margin-top: 1em;
-    aspect-ratio: 3/2;
+    aspect-ratio: 1/1;
 }
 
 .post-buttons {
@@ -68,7 +74,7 @@
 .like-btn,
 .edit-btn,
 .delete-btn {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(72 69 69 / 71%);
     flex: 1 0 30%;
     color: silver;
     border: none;
@@ -90,13 +96,17 @@
 .delete-btn:hover {
     background-color: #c82333;
 }
+.right-section {
+    flex: 0 0 40%;
+}
 .comments-section {
-    padding: 1em 2em;
+    padding: 0.5em 2em;
 }
 
-.comments-section h3 {
+.comments-section h4 {
     margin: 0 0 1rem 0;
     color: white;
+    font-size: 1em;
 }
 .comment-form {
     display: flex;
@@ -104,18 +114,16 @@
 }
 
 .comment-form textarea {
-    padding: 0.5em;
+    padding: 1em;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.7em;
     margin-bottom: 1em;
     background-color: #ccc;
 }
 
 .comment-form button {
-    padding: 0.75em;
+    padding: 0.5em;
     border: none;
-    border-radius: 5px;
     background-color: orange;
     color: black;
     font-size: 1em;
