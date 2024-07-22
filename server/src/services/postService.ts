@@ -18,4 +18,14 @@ const commentPost = (
 ): Promise<PostData | null> =>
     Post.findByIdAndUpdate(postId, { $push: { comments: comment } });
 
-export default { create, getAllPosts, getSinglePost, deletePost, commentPost };
+const likePost = (postId: string, userId: string): Promise<PostData | null> =>
+    Post.findByIdAndUpdate(postId, { $push: { likes: userId } }, { new: true });
+
+export default {
+    create,
+    getAllPosts,
+    getSinglePost,
+    deletePost,
+    commentPost,
+    likePost,
+};
