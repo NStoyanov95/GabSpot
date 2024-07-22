@@ -29,6 +29,9 @@ function DetailsCard() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if (newComment === "") {
+            return;
+        }
         const result = await postComment(postId, newComment);
         setComments(result.comments);
         setComments((comments) => [...comments, newComment]);
