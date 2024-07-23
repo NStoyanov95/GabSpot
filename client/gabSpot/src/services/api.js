@@ -3,6 +3,7 @@ const requester = async (url, method = "GET", data = null) => {
     const options = {
         method,
         headers: {},
+        credentials: "include",
     };
     if (data) {
         options.headers["Content-Type"] = "application/json";
