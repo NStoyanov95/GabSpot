@@ -4,7 +4,7 @@ import { createPost } from "../../services/postService";
 
 function CreatePostForm() {
     const [formData, setFormData] = useState({
-        imageUrl: "",
+        image: "",
         content: "",
     });
 
@@ -22,7 +22,7 @@ function CreatePostForm() {
         const res = await createPost(formData);
 
         setFormData({
-            imageUrl: "",
+            image: "",
             content: "",
         });
     };
@@ -47,8 +47,8 @@ function CreatePostForm() {
                             <input
                                 type="text"
                                 id="imageUrl"
-                                name="imageUrl"
-                                value={formData.imageUrl}
+                                name="image"
+                                value={formData.image}
                                 onChange={changeHandler}
                             />
                         </div>
