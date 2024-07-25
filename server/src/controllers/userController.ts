@@ -76,10 +76,10 @@ router.post("/login", async (req: Request, res: Response) => {
 });
 
 router.get(
-    "/currentUser",
+    "/currentUser/:userId",
     isAuth,
     async (req: CustomRequest, res: Response) => {
-        const userId: string | undefined = req.userId;
+        const userId: string = req.params.userId;
         if (!userId) {
             return res.status(404).send({ message: "User not found" });
         }
