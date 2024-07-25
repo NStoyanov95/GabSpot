@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { login } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -27,6 +29,7 @@ function LoginForm() {
             });
         }
 
+        navigate("/");
         console.log(user);
     };
 
