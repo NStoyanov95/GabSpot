@@ -6,9 +6,10 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import CreatePostForm from "./components/CreatePostForm/CreatePostForm";
 import { Routes, Route } from "react-router-dom";
 import DetailsCard from "./components/DetailsCard/DetailsCard";
+import AuthContext from "./contexts/AuthContext";
 function App() {
     return (
-        <>
+        <AuthContext.Provider>
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
@@ -18,7 +19,7 @@ function App() {
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/createpost" element={<CreatePostForm />} />
             </Routes>
-        </>
+        </AuthContext.Provider>
     );
 }
 
