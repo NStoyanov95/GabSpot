@@ -44,7 +44,7 @@ router.post("/register", async (req: Request, res: Response) => {
             httpOnly: true,
             secure: true,
         });
-        res.send({ email, username, _id });
+        res.send({ email, username, _id, accessToken });
     } catch (error: unknown) {
         if (error instanceof Error) {
             res.status(403).send({ error: error.message });
@@ -65,7 +65,7 @@ router.post("/login", async (req: Request, res: Response) => {
             httpOnly: true,
             secure: true,
         });
-        res.send({ email, username, _id });
+        res.send({ email, username, _id, accessToken });
     } catch (error: unknown) {
         if (error instanceof Error) {
             res.status(403).send({ error: error.message });
