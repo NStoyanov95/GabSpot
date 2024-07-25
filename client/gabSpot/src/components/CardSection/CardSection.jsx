@@ -9,7 +9,6 @@ function CardSection() {
         (async () => {
             const posts = await getAllPosts();
             setPosts(posts);
-            console.log(posts);
         })();
     }, []);
 
