@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./LoginForm.module.css";
 import { login } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
 
 function LoginForm() {
+    const { changeAuthState } = useContext(AuthContext);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
@@ -20,17 +22,21 @@ function LoginForm() {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const user = await login(formData);
+        try {
+            const user = await login(formData);
 
-        if (!user.error) {
-            setFormData({
-                email: "",
-                password: "",
-            });
+            if (!user.error) {
+                setFormData({
+                    email: "",
+                    password: "",
+                });
+            }
+            changeAuthState(user);
+            navigate("/");
+            console.log(user);
+        } catch (error) {
+            console.log(error);
         }
-
-        navigate("/");
-        console.log(user);
     };
 
     return (

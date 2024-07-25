@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./RegisterForm.module.css";
 import { register } from "../../services/userService";
+import AuthContext from "../../contexts/AuthContext";
 
 function RegisterForm() {
+    const { changeAuthState } = useContext(AuthContext);
     const [formData, setFormData] = useState({
         username: "",
         firstName: "",
@@ -23,21 +25,27 @@ function RegisterForm() {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const res = await register(formData);
+        try {
+            const res = await register(formData);
 
-        if (!res.error) {
-            setFormData({
-                username: "",
-                firstName: "",
-                lastName: "",
-                email: "",
-                profileImage: "",
-                password: "",
-                rePassword: "",
-            });
+            if (!res.error) {
+                setFormData({
+                    username: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    profileImage: "",
+                    password: "",
+                    rePassword: "",
+                });
+            }
+
+            changeAuthState(res);
+
+            console.log(formData);
+        } catch (error) {
+            console.log(error);
         }
-
-        console.log(formData);
     };
 
     return (
