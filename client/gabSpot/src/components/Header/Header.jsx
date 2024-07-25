@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
 
 function Header() {
+    const { isAuth } = useContext(AuthContext);
     return (
         <>
             <header className={styles["site-header"]}>
@@ -12,27 +15,39 @@ function Header() {
                 </div>
                 <div className={styles["navigation-menu"]}>
                     <ul className={styles["menu-list"]}>
-                        <li className={styles["create-post"]}>
-                            <Link to="/createpost">Create Post</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard">Dashboard</Link>
-                        </li>
-                        <li>
-                            <Link to="">Messages</Link>
-                        </li>
-                        <li>
-                            <Link to="">Profile</Link>
-                        </li>
-                        <li>
-                            <Link to="/login">Login</Link>
-                        </li>
-                        <li>
-                            <Link to="/register">Register</Link>
-                        </li>
-                        <li>
-                            <Link to="">Logout</Link>
-                        </li>
+                        {/* Add dynamic navigation */}
+
+                        {isAuth ? (
+                            <>
+                                <li className={styles["create-post"]}>
+                                    <Link to="/createpost">Create Post</Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
+                                <li>
+                                    <Link to="">Messages</Link>
+                                </li>
+                                <li>
+                                    <Link to="">Profile</Link>
+                                </li>
+                                <li>
+                                    <Link to="">Logout</Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
+                                <li>
+                                    <Link to="/login">Login</Link>
+                                </li>
+                                <li>
+                                    <Link to="/register">Register</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </header>
