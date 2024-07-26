@@ -103,10 +103,13 @@ router.get("/verifyUser", async (req: Request, res: Response) => {
     const token = req.cookies["auth-cookie"];
 
     if (!token) {
-        return res.status(401).send({ error: "Unauthorized" });
+        return null;
     }
-
-    res.json(verifyToken(token));
+    try {
+        res.json(verifyToken(token));
+    } catch (error) {
+        return null;
+    }
 });
 
 export default router;
