@@ -7,3 +7,4 @@ const verifyToken = (token: string) => {
     }
     return jwt.verify(token, secretKey);
 };
+export default verifyToken;

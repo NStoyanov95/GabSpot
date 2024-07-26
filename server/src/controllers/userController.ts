@@ -4,6 +4,7 @@ import { UserData, UserType } from "../types/User";
 import userService from "../services/userService";
 import { CustomRequest } from "../types/CustomRequest";
 import isAuth from "../middlewares/isAuth";
+import verifyToken from "../utils/verifyToken";
 
 const router = express.Router();
 
@@ -98,5 +99,14 @@ router.get(
         }
     }
 );
+router.get("/verifyUser", async (req: Request, res: Response) => {
+    const token = req.cookies["auth-cookie"];
+
+    if (!token) {
+        return res.status(401).send({ error: "Unauthorized" });
+    }
+
+    res.json(verifyToken(token));
+});
 
 export default router;
