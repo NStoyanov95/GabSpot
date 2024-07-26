@@ -17,3 +17,8 @@ export const getCurrentUser = async (userId) => {
     const data = await requester(`users/currentUser/${userId}`);
     return data;
 };
+
+export const verifyUser = async () => {
+    const data = await requester(`users/verifyUser`);
+    return data;
+};
