@@ -1,9 +1,21 @@
 import { createContext, useState } from "react";
+import { verifyUser } from "../services/userService";
 
 const AuthContext = createContext();
 
 export function AuthContextProvider(props) {
     const [authData, setAuthData] = useState({});
+
+    useState(() => {
+        (async () => {
+            try {
+                const data = await verifyUser();
+                setAuthData(data);
+            } catch (error) {
+                setAuthData({});
+            }
+        })();
+    }, []);
 
     const changeAuthState = (data) => {
         setAuthData(data);
@@ -14,7 +26,7 @@ export function AuthContextProvider(props) {
         email: authData.email,
         username: authData.username,
         accessToken: authData.accessToken,
-        isAuth: !!authData.accessToken,
+        isAuth: !!authData.email,
         changeAuthState,
     };
 
