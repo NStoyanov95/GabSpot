@@ -17,7 +17,7 @@ router.post("/create", isAuth, async (req: CustomRequest, res: Response) => {
         return res.status(404).send({ message: "Author not found" });
     }
     postData.authorImage = author.profileImage;
-    postData.author = author.username;
+    postData.author = author.email;
 
     try {
         const newPost: PostData = await postService.create(postData);
