@@ -57,7 +57,7 @@
 }
 .likes-comments-container {
     font-size: 0.9em;
-    padding: 0 1em;
+    padding: 0.5em 1em;
     color: #a7a7a7;
     display: flex;
     justify-content: space-between;
