@@ -6,25 +6,10 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import CreatePostForm from "./components/CreatePostForm/CreatePostForm";
 import { Routes, Route } from "react-router-dom";
 import DetailsCard from "./components/DetailsCard/DetailsCard";
-import AuthContext from "./contexts/AuthContext";
-import { useState } from "react";
+import { AuthContextProvider } from "./contexts/AuthContext";
 function App() {
-    const [authData, setAuthData] = useState({});
-    const changeAuthState = (data) => {
-        setAuthData(data);
-    };
-
-    const contextData = {
-        userId: authData._id,
-        email: authData.email,
-        username: authData.username,
-        accessToken: authData.accessToken,
-        isAuth: !!authData.accessToken,
-        changeAuthState,
-    };
-
     return (
-        <AuthContext.Provider value={contextData}>
+        <AuthContextProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
@@ -34,7 +19,7 @@ function App() {
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/createpost" element={<CreatePostForm />} />
             </Routes>
-        </AuthContext.Provider>
+        </AuthContextProvider>
     );
 }
 
