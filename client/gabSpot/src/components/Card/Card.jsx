@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
-import { useContext } from "react";
-import AuthContext from "../../contexts/AuthContext";
 function Card({ post }) {
-    const { isAuth } = useContext(AuthContext);
     return (
         <div className={styles["card"]}>
             <header className={styles["card-header"]}>
@@ -26,16 +23,6 @@ function Card({ post }) {
                 <p>Likes: {post.likes.length}</p>
                 <p>Comments: {post.comments.length}</p>
             </div>
-            {isAuth && (
-                <footer className={styles["card-footer"]}>
-                    <button>
-                        <i className="fas fa-thumbs-up"></i>
-                    </button>
-                    <button>
-                        <i className="fas fa-comment"></i>
-                    </button>
-                </footer>
-            )}
         </div>
     );
 }
