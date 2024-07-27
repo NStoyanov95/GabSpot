@@ -10,7 +10,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 import AuthContext from "../../contexts/AuthContext";
 function DetailsCard() {
-    console.log("details rendered");
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
@@ -19,7 +18,6 @@ function DetailsCard() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("useEffect details rendered");
         (async () => {
             const post = await getSinglePost(postId);
             setPost(post);
