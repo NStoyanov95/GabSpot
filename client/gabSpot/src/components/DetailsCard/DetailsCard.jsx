@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./DetailsCard.module.css";
 import { useState } from "react";
 import {
@@ -8,20 +8,24 @@ import {
 } from "../../services/postService";
 import { useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
+import AuthContext from "../../contexts/AuthContext";
 function DetailsCard() {
+    console.log("details rendered");
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
+    const { email } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log("useEffect details rendered");
         (async () => {
             const post = await getSinglePost(postId);
             setPost(post);
             setComments(post.comments);
         })();
-    }, []);
+    }, [postId]);
 
     const changeHandler = (e) => {
         setNewComment(e.target.value);
@@ -43,6 +47,8 @@ function DetailsCard() {
         navigate("/dashboard");
     };
 
+    const isAuthor = email === post.author;
+    console.log(isAuthor);
     return (
         <div className={styles["post-container"]}>
             <div className={styles["post-card"]}>
@@ -71,15 +77,19 @@ function DetailsCard() {
                             <button className={styles["like-btn"]}>
                                 <i className="fas fa-thumbs-up" /> Like
                             </button>
-                            <button className={styles["edit-btn"]}>
-                                <i className="fas fa-edit" /> Edit
-                            </button>
-                            <button
-                                className={styles["delete-btn"]}
-                                onClick={onPostDelete}
-                            >
-                                <i className="fas fa-trash" /> Delete
-                            </button>
+                            {isAuthor && (
+                                <>
+                                    <button className={styles["edit-btn"]}>
+                                        <i className="fas fa-edit" /> Edit
+                                    </button>
+                                    <button
+                                        className={styles["delete-btn"]}
+                                        onClick={onPostDelete}
+                                    >
+                                        <i className="fas fa-trash" /> Delete
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
