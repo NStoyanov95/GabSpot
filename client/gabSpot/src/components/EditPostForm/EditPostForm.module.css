@@ -1,0 +1,87 @@
+.formWrapper {
+    color: white;
+    padding: 1em;
+    align-items: center;
+}
+.leftSide {
+    flex: 0 0 50%;
+    text-align: center;
+    padding-bottom: 2em;
+    background-color: #00000018;
+    border-color: orange;
+    border-left-style: dashed;
+    border-radius: 2em;
+}
+.leftSide p {
+    padding-top: 1em;
+    font-style: italic;
+    font-size: 0.8em;
+}
+.rightSide {
+    flex: 0 0 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+.editPostForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    box-shadow: 0 0 2px 0 rgba(255, 166, 0, 0.353);
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.466);
+    border-radius: 0.3em;
+}
+
+.editPostForm .field {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+.editPostForm input,
+.editPostForm textarea {
+    width: 100%;
+    background-color: #404040;
+    border-color: black;
+    border-radius: 0.3em;
+    color: white;
+}
+.editPostForm input {
+    padding: 0.5em;
+}
+.editPostForm textarea {
+    padding: 3em;
+}
+
+.editPostForm .submitBtn {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submitBtn:hover {
+    background-color: rgba(255, 166, 0, 0.791);
+}
+.editPostForm input[type="text"]:focus,
+.editPostForm textarea:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+@media (width > 800px) {
+    .formWrapper {
+        display: flex;
+        padding: 4em;
+    }
+    .leftSide {
+        text-align: left;
+        padding: 2em;
+    }
+}
