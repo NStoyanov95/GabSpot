@@ -3,6 +3,7 @@ import styles from "./DetailsCard.module.css";
 import { useState } from "react";
 import {
     deletePost,
+    dislikePost,
     getSinglePost,
     likePost,
     postComment,
@@ -10,14 +11,16 @@ import {
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 import AuthContext from "../../contexts/AuthContext";
+
 function DetailsCard() {
+    const navigate = useNavigate();
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
+    const [likes, setLikes] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
     const [newComment, setNewComment] = useState("");
     const { email, userId } = useContext(AuthContext);
-    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -25,6 +28,7 @@ function DetailsCard() {
             setPost(post);
             setComments(post.comments);
             setLikeCount(post.likes.length);
+            setLikes(post.likes);
         })();
     }, [postId]);
 
@@ -51,10 +55,20 @@ function DetailsCard() {
     const onPostLike = async () => {
         const result = await likePost(postId, userId);
         setLikeCount((oldState) => oldState + 1);
+        setLikes((oldLikes) => [...oldLikes, userId]);
+        setPost(result);
+    };
+
+    const onPostDislike = async () => {
+        const result = await dislikePost(postId, userId);
+        setLikeCount((oldState) => oldState - 1);
+        setLikes((oldLikes) => oldLikes.filter((id) => id !== userId));
         setPost(result);
     };
 
     const isAuthor = email === post.author;
+    const isLiked = likes.includes(userId);
+
     return (
         <div className={styles["post-container"]}>
             <div className={styles["post-card"]}>
@@ -85,12 +99,22 @@ function DetailsCard() {
                         <p>Comments: {comments.length}</p>
 
                         <div className={styles["post-buttons"]}>
-                            <button
-                                className={styles["like-btn"]}
-                                onClick={onPostLike}
-                            >
-                                <i className="fas fa-thumbs-up" /> Like
-                            </button>
+                            {isLiked ? (
+                                <button
+                                    className={styles["like-btn"]}
+                                    onClick={onPostDislike}
+                                >
+                                    <i className="fas fa-thumbs-down" /> Dislike
+                                </button>
+                            ) : (
+                                <button
+                                    className={styles["like-btn"]}
+                                    onClick={onPostLike}
+                                >
+                                    <i className="fas fa-thumbs-up" /> Like
+                                </button>
+                            )}
+
                             {isAuthor && (
                                 <>
                                     <Link
