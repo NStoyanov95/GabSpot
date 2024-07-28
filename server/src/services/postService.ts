@@ -22,6 +22,12 @@ const commentPost = (
 const likePost = (postId: string, userId: string): Promise<PostData | null> =>
     Post.findByIdAndUpdate(postId, { $push: { likes: userId } }, { new: true });
 
+const dislikePost = (
+    postId: string,
+    userId: string
+): Promise<PostData | null> =>
+    Post.findByIdAndUpdate(postId, { $pull: { likes: userId } }, { new: true });
+
 const editPost = (
     postId: string,
     postData: PostType
@@ -34,6 +40,7 @@ export default {
     getSinglePost,
     deletePost,
     commentPost,
-    likePost,
     editPost,
+    likePost,
+    dislikePost,
 };

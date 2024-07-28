@@ -140,4 +140,23 @@ router.post("/like/:postId", async (req: Request, res: Response) => {
     }
 });
 
+router.post("/dislike/:postId", async (req: Request, res: Response) => {
+    const postId: string = req.params.postId;
+    const userId: string = req.body.userId;
+
+    try {
+        const post: PostData | null = await postService.dislikePost(
+            postId,
+            userId
+        );
+        res.json(post);
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+});
+
 export default router;
