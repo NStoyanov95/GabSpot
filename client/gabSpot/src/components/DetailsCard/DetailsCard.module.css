@@ -81,6 +81,8 @@
     padding: 0.7em;
     cursor: pointer;
     box-shadow: 0 0 3px 0 rgba(242, 242, 242, 0.1);
+    font-size: 1em;
+    text-align: center;
 }
 
 .delete-btn {
