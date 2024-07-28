@@ -10,6 +10,11 @@ export const createPost = async (formData) => {
     return data;
 };
 
+export const editPost = async (postId, formData) => {
+    const data = await requester(`posts/edit/${postId}`, "POST", formData);
+    return data;
+};
+
 export const getSinglePost = async (postId) => {
     const data = await requester(`posts/details/${postId}`);
     return data;
