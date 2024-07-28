@@ -1,5 +1,6 @@
 import Post from "../models/Post";
 import { PostData, PostType } from "../types/Post";
+import { UserType } from "../types/User";
 
 const create = (postData: PostType): Promise<PostData> => Post.create(postData);
 
@@ -21,6 +22,12 @@ const commentPost = (
 const likePost = (postId: string, userId: string): Promise<PostData | null> =>
     Post.findByIdAndUpdate(postId, { $push: { likes: userId } }, { new: true });
 
+const editPost = (
+    postId: string,
+    postData: PostType
+): Promise<PostData | null> =>
+    Post.findByIdAndUpdate(postId, postData, { new: true });
+
 export default {
     create,
     getAllPosts,
@@ -28,4 +35,5 @@ export default {
     deletePost,
     commentPost,
     likePost,
+    editPost,
 };
