@@ -38,3 +38,10 @@ export const likePost = async (postId, userId) => {
     });
     return data;
 };
+
+export const dislikePost = async (postId, userId) => {
+    const data = await requester(`posts/dislike/${postId}`, "POST", {
+        userId,
+    });
+    return data;
+};
