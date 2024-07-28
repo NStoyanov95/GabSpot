@@ -31,6 +31,31 @@ router.post("/create", isAuth, async (req: CustomRequest, res: Response) => {
     }
 });
 
+router.post(
+    "/edit/:postId",
+    isAuth,
+    async (req: CustomRequest, res: Response) => {
+        const postId: string = req.params.postId;
+        const postData: PostType = req.body;
+        try {
+            const post: PostData | null = await postService.editPost(
+                postId,
+                postData
+            );
+            if (!post) {
+                return res.status(404).send({ message: "Post not found" });
+            }
+            res.json(post);
+        } catch (error) {
+            if (error instanceof Error) {
+                res.status(500).json({ message: error.message });
+            } else {
+                res.status(500).json({ message: "Unknown error occurred" });
+            }
+        }
+    }
+);
+
 router.get("/feed", async (req: Request, res: Response) => {
     try {
         const posts: PostData[] = await postService.getAllPosts();
