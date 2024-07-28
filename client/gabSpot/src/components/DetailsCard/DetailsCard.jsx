@@ -14,6 +14,7 @@ function DetailsCard() {
     const { postId } = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
+    const [likeCount, setLikeCount] = useState(0);
     const [newComment, setNewComment] = useState("");
     const { email, userId } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,6 +24,7 @@ function DetailsCard() {
             const post = await getSinglePost(postId);
             setPost(post);
             setComments(post.comments);
+            setLikeCount(post.likes.length);
         })();
     }, [postId]);
 
@@ -48,6 +50,7 @@ function DetailsCard() {
 
     const onPostLike = async () => {
         const result = await likePost(postId, userId);
+        setLikeCount((oldState) => oldState + 1);
         setPost(result);
     };
 
@@ -79,7 +82,7 @@ function DetailsCard() {
                         <img src={post.image} alt="Post Image" />
                     </div>
                     <div className={styles["post-footer"]}>
-                        <p>Likes: {post.likes?.length}</p>
+                        <p>Likes: {likeCount}</p>
                         <p>Comments: {comments.length}</p>
 
                         <div className={styles["post-buttons"]}>
