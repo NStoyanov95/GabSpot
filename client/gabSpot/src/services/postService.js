@@ -26,3 +26,10 @@ export const deletePost = async (postId) => {
     const data = await requester(`posts/delete/${postId}`, "DELETE");
     return data;
 };
+
+export const likePost = async (postId, userId) => {
+    const data = await requester(`posts/like/${postId}`, "POST", {
+        userId,
+    });
+    return data;
+};
