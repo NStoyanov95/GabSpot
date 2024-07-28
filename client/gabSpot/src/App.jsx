@@ -4,8 +4,10 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import CreatePostForm from "./components/CreatePostForm/CreatePostForm";
-import { Routes, Route } from "react-router-dom";
 import DetailsCard from "./components/DetailsCard/DetailsCard";
+import EditPostForm from "./components/EditPostForm/EditPostForm";
+
+import { Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/AuthContext";
 function App() {
     return (
@@ -18,6 +20,7 @@ function App() {
                 <Route path="/register" element={<RegisterForm />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/createpost" element={<CreatePostForm />} />
+                <Route path="/editPost/:postId" element={<EditPostForm />} />
             </Routes>
         </AuthContextProvider>
     );
