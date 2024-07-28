@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
     deletePost,
     getSinglePost,
+    likePost,
     postComment,
 } from "../../services/postService";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,7 +15,7 @@ function DetailsCard() {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
-    const { email } = useContext(AuthContext);
+    const { email, userId } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -45,6 +46,11 @@ function DetailsCard() {
         navigate("/dashboard");
     };
 
+    const onPostLike = async () => {
+        const result = await likePost(postId, userId);
+        setPost(result);
+    };
+
     const isAuthor = email === post.author;
     console.log(isAuthor);
     return (
@@ -71,8 +77,16 @@ function DetailsCard() {
                     <div className={styles["post-content"]}>
                         <p>{post.content}</p>
                         <img src={post.image} alt="Post Image" />
+                    </div>
+                    <div className={styles["post-footer"]}>
+                        <p>Likes: {post.likes?.length}</p>
+                        <p>Comments: {comments.length}</p>
+
                         <div className={styles["post-buttons"]}>
-                            <button className={styles["like-btn"]}>
+                            <button
+                                className={styles["like-btn"]}
+                                onClick={onPostLike}
+                            >
                                 <i className="fas fa-thumbs-up" /> Like
                             </button>
                             {isAuthor && (
