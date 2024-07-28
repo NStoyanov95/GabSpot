@@ -7,7 +7,7 @@ import {
     likePost,
     postComment,
 } from "../../services/postService";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 import AuthContext from "../../contexts/AuthContext";
 function DetailsCard() {
@@ -55,7 +55,6 @@ function DetailsCard() {
     };
 
     const isAuthor = email === post.author;
-    console.log(isAuthor);
     return (
         <div className={styles["post-container"]}>
             <div className={styles["post-card"]}>
@@ -94,9 +93,12 @@ function DetailsCard() {
                             </button>
                             {isAuthor && (
                                 <>
-                                    <button className={styles["edit-btn"]}>
+                                    <Link
+                                        className={styles["edit-btn"]}
+                                        to={`/editPost/${postId}`}
+                                    >
                                         <i className="fas fa-edit" /> Edit
-                                    </button>
+                                    </Link>
                                     <button
                                         className={styles["delete-btn"]}
                                         onClick={onPostDelete}
