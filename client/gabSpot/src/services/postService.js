@@ -20,9 +20,17 @@ export const getSinglePost = async (postId) => {
     return data;
 };
 
-export const postComment = async (postId, comment) => {
-    const data = await requester(`posts/comment/${postId}`, "POST", {
+export const postComment = async (postId, comment, author) => {
+    const data = await requester(`comments/create/${postId}`, "POST", {
         comment,
+        author,
+    });
+    return data;
+};
+
+export const deleteComment = async (postId, commentId) => {
+    const data = await requester(`comments/delete/${commentId}`, "POST", {
+        postId,
     });
     return data;
 };

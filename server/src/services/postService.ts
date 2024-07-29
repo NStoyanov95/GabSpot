@@ -8,16 +8,10 @@ const getAllPosts = (): Promise<PostData[]> =>
     Post.find().sort({ createdAt: -1 });
 
 const getSinglePost = (postId: string): Promise<PostData | null> =>
-    Post.findById(postId);
+    Post.findById(postId).populate("comments");
 
 const deletePost = (postId: string): Promise<PostData | null> =>
     Post.findByIdAndDelete(postId);
-
-const commentPost = (
-    postId: string,
-    comment: string
-): Promise<PostData | null> =>
-    Post.findByIdAndUpdate(postId, { $push: { comments: comment } });
 
 const likePost = (postId: string, userId: string): Promise<PostData | null> =>
     Post.findByIdAndUpdate(postId, { $push: { likes: userId } }, { new: true });
@@ -39,7 +33,6 @@ export default {
     getAllPosts,
     getSinglePost,
     deletePost,
-    commentPost,
     editPost,
     likePost,
     dislikePost,

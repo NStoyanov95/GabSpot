@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import styles from "./DetailsCard.module.css";
 import { useState } from "react";
 import {
+    deleteComment,
     deletePost,
     dislikePost,
     getSinglePost,
@@ -26,7 +27,7 @@ function DetailsCard() {
         (async () => {
             const post = await getSinglePost(postId);
             setPost(post);
-            setComments(post.comments);
+            setComments(post.comments || []);
             setLikeCount(post.likes.length);
             setLikes(post.likes);
         })();
@@ -41,10 +42,16 @@ function DetailsCard() {
         if (newComment === "") {
             return;
         }
-        const result = await postComment(postId, newComment);
+        const result = await postComment(postId, newComment, email);
         setComments(result.comments);
-        setComments((comments) => [...comments, newComment]);
         setNewComment("");
+    };
+
+    const onCommentDelete = async (commentId) => {
+        const result = await deleteComment(postId, commentId);
+        setComments((oldstate) =>
+            oldstate.filter((comment) => comment._id !== commentId)
+        );
     };
 
     const onPostDelete = async () => {
@@ -138,7 +145,14 @@ function DetailsCard() {
                     <div className={styles["comments-section"]}>
                         <h4>Comments</h4>
                         {comments.map((comment) => (
-                            <Comments key={comment} comment={comment} />
+                            <Comments
+                                key={comment._id}
+                                commentId={comment._id}
+                                author={comment.author}
+                                comment={comment.content}
+                                isAuthor={isAuthor}
+                                onDelete={onCommentDelete}
+                            />
                         ))}
                         <form className={styles["comment-form"]}>
                             <textarea

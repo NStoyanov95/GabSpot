@@ -102,24 +102,6 @@ router.delete("/delete/:postId", async (req: Request, res: Response) => {
     }
 });
 
-router.post("/comment/:postId", async (req: Request, res: Response) => {
-    const postId: string = req.params.postId;
-    const comment: string = req.body.comment;
-    try {
-        const post: PostData | null = await postService.commentPost(
-            postId,
-            comment
-        );
-        res.json(post);
-    } catch (error) {
-        if (error instanceof Error) {
-            res.status(500).json({ message: error.message });
-        } else {
-            res.status(500).json({ message: "Unknown error occurred" });
-        }
-    }
-});
-
 router.post("/like/:postId", async (req: Request, res: Response) => {
     const postId: string = req.params.postId;
     const userId: string = req.body.userId;

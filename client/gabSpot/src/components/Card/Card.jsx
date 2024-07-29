@@ -21,7 +21,7 @@ function Card({ post }) {
             </div>
             <div className={styles["likes-comments-container"]}>
                 <p>Likes: {post.likes.length}</p>
-                <p>Comments: {post.comments.length}</p>
+                <p>Comments: {post.comments?.length}</p>
             </div>
         </div>
     );
