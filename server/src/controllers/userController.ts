@@ -99,6 +99,11 @@ router.get(
         }
     }
 );
+
+router.post("/logout", (req: Request, res: Response) => {
+    res.clearCookie("auth-cookie");
+    res.send({ success: true });
+});
 router.get("/verifyUser", async (req: Request, res: Response) => {
     const token = req.cookies["auth-cookie"];
 
