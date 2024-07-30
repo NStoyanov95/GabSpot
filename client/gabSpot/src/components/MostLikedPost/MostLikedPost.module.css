@@ -1,0 +1,25 @@
+.right-side-menu {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.last-post {
+    padding: 1em;
+    color: white;
+    background-color: #323539;
+    border-radius: 0.3em;
+    box-shadow: 0 0 10px -5px orange;
+}
+.last-post .media img {
+    display: blog;
+    width: 100%;
+}
+.last-post .likes {
+    color: orange;
+    padding-top: 1em;
+}
+.last-post .description {
+    font-size: 0.8em;
+    font-style: italic;
+}
