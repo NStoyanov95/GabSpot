@@ -21,7 +21,7 @@ function DetailsCard() {
     const [likes, setLikes] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
     const [newComment, setNewComment] = useState("");
-    const { email, userId } = useContext(AuthContext);
+    const { email, userId, isAuth } = useContext(AuthContext);
 
     useEffect(() => {
         (async () => {
@@ -105,45 +105,50 @@ function DetailsCard() {
                         <p>Likes: {likeCount}</p>
                         <p>Comments: {comments.length}</p>
 
-                        <div className={styles["post-buttons"]}>
-                            {isLiked ? (
-                                <button
-                                    className={styles["like-btn"]}
-                                    onClick={onPostDislike}
-                                >
-                                    <i className="fas fa-thumbs-down" /> Dislike
-                                </button>
-                            ) : (
-                                <button
-                                    className={styles["like-btn"]}
-                                    onClick={onPostLike}
-                                >
-                                    <i className="fas fa-thumbs-up" /> Like
-                                </button>
-                            )}
-
-                            {isAuthor && (
-                                <>
-                                    <Link
-                                        className={styles["edit-btn"]}
-                                        to={`/editPost/${postId}`}
-                                    >
-                                        <i className="fas fa-edit" /> Edit
-                                    </Link>
+                        {isAuth && (
+                            <div className={styles["post-buttons"]}>
+                                {isLiked ? (
                                     <button
-                                        className={styles["delete-btn"]}
-                                        onClick={onPostDelete}
+                                        className={styles["like-btn"]}
+                                        onClick={onPostDislike}
                                     >
-                                        <i className="fas fa-trash" /> Delete
+                                        <i className="fas fa-thumbs-down" />{" "}
+                                        Dislike
                                     </button>
-                                </>
-                            )}
-                        </div>
+                                ) : (
+                                    <button
+                                        className={styles["like-btn"]}
+                                        onClick={onPostLike}
+                                    >
+                                        <i className="fas fa-thumbs-up" /> Like
+                                    </button>
+                                )}
+
+                                {isAuthor && (
+                                    <>
+                                        <Link
+                                            className={styles["edit-btn"]}
+                                            to={`/editPost/${postId}`}
+                                        >
+                                            <i className="fas fa-edit" /> Edit
+                                        </Link>
+                                        <button
+                                            className={styles["delete-btn"]}
+                                            onClick={onPostDelete}
+                                        >
+                                            <i className="fas fa-trash" />{" "}
+                                            Delete
+                                        </button>
+                                    </>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className={styles["right-section"]}>
                     <div className={styles["comments-section"]}>
                         <h4>Comments</h4>
+                        {comments.length === 0 && <p>No comments yet...</p>}
                         {comments.map((comment) => (
                             <Comments
                                 key={comment._id}
@@ -154,16 +159,18 @@ function DetailsCard() {
                                 onDelete={onCommentDelete}
                             />
                         ))}
-                        <form className={styles["comment-form"]}>
-                            <textarea
-                                placeholder="Add a comment..."
-                                onChange={changeHandler}
-                                value={newComment}
-                            />
-                            <button type="submit" onClick={onSubmit}>
-                                Post Comment
-                            </button>
-                        </form>
+                        {isAuth && (
+                            <form className={styles["comment-form"]}>
+                                <textarea
+                                    placeholder="Add a comment..."
+                                    onChange={changeHandler}
+                                    value={newComment}
+                                />
+                                <button type="submit" onClick={onSubmit}>
+                                    Post Comment
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

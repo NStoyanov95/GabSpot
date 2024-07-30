@@ -9,6 +9,7 @@ import EditPostForm from "./components/EditPostForm/EditPostForm";
 
 import { Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import Logout from "./components/Logout/Logout";
 function App() {
     return (
         <AuthContextProvider>
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/createpost" element={<CreatePostForm />} />
                 <Route path="/editPost/:postId" element={<EditPostForm />} />
+                <Route path="/logout" element={<Logout />} />
             </Routes>
         </AuthContextProvider>
     );

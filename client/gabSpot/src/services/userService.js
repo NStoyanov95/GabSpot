@@ -22,3 +22,7 @@ export const verifyUser = async () => {
     const data = await requester(`users/verifyUser`);
     return data;
 };
+
+export const logout = async () => {
+    const data = await requester("users/logout");
+};

@@ -100,7 +100,7 @@ router.get(
     }
 );
 
-router.post("/logout", (req: Request, res: Response) => {
+router.get("/logout", (req: Request, res: Response) => {
     res.clearCookie("auth-cookie");
     res.send({ success: true });
 });
