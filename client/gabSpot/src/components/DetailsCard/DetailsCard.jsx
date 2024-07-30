@@ -102,8 +102,10 @@ function DetailsCard() {
                         <img src={post.image} alt="Post Image" />
                     </div>
                     <div className={styles["post-footer"]}>
-                        <p>Likes: {likeCount}</p>
-                        <p>Comments: {comments.length}</p>
+                        <div className={styles["post-likes"]}>
+                            <p>Likes: {likeCount}</p>
+                            <p>Comments: {comments.length}</p>
+                        </div>
 
                         {isAuth && (
                             <div className={styles["post-buttons"]}>
