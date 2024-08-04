@@ -7,8 +7,8 @@
     color: white;
     gap: 1em;
     border-radius: 0.3em;
-    background-color: #323539;
-    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.151);
+    box-shadow: 0 0 10px -5px orange;
 }
 
 .card-header {

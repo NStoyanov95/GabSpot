@@ -15,8 +15,8 @@ function MostLikedPost() {
     }, []);
     return (
         <>
-            <Link to={`/details/${post._id}`}>
-                <div className={style["right-side-menu"]}>
+            <div className={style["right-side-menu"]}>
+                <Link to={`/details/${post._id}`}>
                     <div className={style["last-post"]}>
                         <div className="header">
                             <h5>Most Liked Post</h5>
@@ -28,8 +28,8 @@ function MostLikedPost() {
                             <p>Likes: {likeLength}</p>
                         </div>
                     </div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </>
     );
 }

@@ -6,6 +6,7 @@
     height: 87vh;
 }
 .card-container {
+    padding: 0.1em;
     display: flex;
     flex-direction: column;
     align-items: center;
