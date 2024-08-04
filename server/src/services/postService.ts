@@ -28,6 +28,9 @@ const editPost = (
 ): Promise<PostData | null> =>
     Post.findByIdAndUpdate(postId, postData, { new: true });
 
+const mostLikedPost = (): Promise<PostData | null> =>
+    Post.findOne().sort({ likes: 1 });
+
 export default {
     create,
     getAllPosts,
@@ -36,4 +39,5 @@ export default {
     editPost,
     likePost,
     dislikePost,
+    mostLikedPost,
 };
