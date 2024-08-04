@@ -28,8 +28,27 @@ const editPost = (
 ): Promise<PostData | null> =>
     Post.findByIdAndUpdate(postId, postData, { new: true });
 
-const mostLikedPost = (): Promise<PostData | null> =>
-    Post.findOne().sort({ likes: 1 });
+const mostLikedPost = async (): Promise<PostData | null> => {
+    try {
+        const result = await Post.aggregate([
+            {
+                $addFields: {
+                    likesCount: { $size: "$likes" },
+                },
+            },
+            {
+                $sort: { likesCount: -1 },
+            },
+            {
+                $limit: 1,
+            },
+        ]);
+        return result.length > 0 ? result[0] : null;
+    } catch (error) {
+        console.error("Error fetching the most liked post:", error);
+        throw error;
+    }
+};
 
 export default {
     create,
