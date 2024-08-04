@@ -141,4 +141,16 @@ router.post("/dislike/:postId", async (req: Request, res: Response) => {
     }
 });
 
+router.get("/most-liked", async (req: Request, res: Response) => {
+    try {
+        const post: PostData | null = await postService.mostLikedPost();
+        res.json(post);
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+});
 export default router;
