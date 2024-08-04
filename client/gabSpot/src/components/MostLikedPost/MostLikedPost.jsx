@@ -1,28 +1,35 @@
+import { useEffect, useState } from "react";
 import style from "./MostLikedPost.module.css";
+import { mostLikedPost } from "../../services/postService";
+import { Link } from "react-router-dom";
 
-function MostLikedPost(params) {
+function MostLikedPost() {
+    const [post, setPost] = useState({});
+    const [likeLength, setLikeLength] = useState(0);
+    useEffect(() => {
+        (async () => {
+            const data = await mostLikedPost();
+            setPost(data);
+            setLikeLength(data.likes.length);
+        })();
+    }, []);
     return (
         <>
-            <div className={style["right-side-menu"]}>
-                <div className={style["last-post"]}>
-                    <div className="header">
-                        <h5>Most Liked Post</h5>
-                    </div>
-                    <div className={style["media"]}>
-                        <img src="https://hips.hearstapps.com/hmg-prod/images/ama-dablam-mountain-peak-view-from-chola-pass-royalty-free-image-1623254695.jpg" />
-                    </div>
-                    <div className={style["description"]}>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Sed inventore quaerat eum repudiandae suscipit
-                            soluta aliquid modi delectus, tempora quisquam ve
-                        </p>
-                    </div>
-                    <div className={style["likes"]}>
-                        <p>Likes: 3</p>
+            <Link to={`/details/${post._id}`}>
+                <div className={style["right-side-menu"]}>
+                    <div className={style["last-post"]}>
+                        <div className="header">
+                            <h5>Most Liked Post</h5>
+                        </div>
+                        <div className={style["media"]}>
+                            <img src={post.image} />
+                        </div>
+                        <div className={style["likes"]}>
+                            <p>Likes: {likeLength}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Link>
         </>
     );
 }

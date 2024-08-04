@@ -53,3 +53,8 @@ export const dislikePost = async (postId, userId) => {
     });
     return data;
 };
+
+export const mostLikedPost = async () => {
+    const data = await requester(`posts/most-liked`);
+    return data;
+};

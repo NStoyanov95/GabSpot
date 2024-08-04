@@ -13,13 +13,10 @@
 }
 .last-post .media img {
     display: blog;
-    width: 100%;
+    width: 500px;
+    aspect-ratio: 3/2;
 }
 .last-post .likes {
     color: orange;
     padding-top: 1em;
-}
-.last-post .description {
-    font-size: 0.8em;
-    font-style: italic;
 }
