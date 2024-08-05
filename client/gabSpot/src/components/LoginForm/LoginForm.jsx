@@ -11,6 +11,7 @@ function LoginForm() {
         email: "",
         password: "",
     });
+    const [error, setError] = useState({});
 
     const changeHandler = (e) => {
         setFormData((oldState) => ({
@@ -19,23 +20,38 @@ function LoginForm() {
         }));
     };
 
+    const validate = () => {
+        let newErrors = {};
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required.";
+        }
+        if (!formData.password.trim()) {
+            newErrors.password = "Password is required.";
+        }
+        setError(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const submitHandler = async (e) => {
         e.preventDefault();
+
+        if (!validate()) {
+            return;
+        }
 
         try {
             const user = await login(formData);
 
-            if (!user.error) {
-                setFormData({
-                    email: "",
-                    password: "",
-                });
+            if (user.error) {
+                throw new Error(user.error);
             }
+            setError({});
             changeAuthState(user);
             navigate("/");
             console.log(user);
         } catch (error) {
-            console.log(error);
+            setError({ submit: error.error });
+            console.log("error submit" + error.error);
         }
     };
 
@@ -46,6 +62,10 @@ function LoginForm() {
                     <header>
                         <h3>Login</h3>
                     </header>
+                    {error.submit && (
+                        <p className={styles.error}>{error.submit}</p>
+                    )}
+
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="text"
@@ -63,6 +83,10 @@ function LoginForm() {
                             Email
                         </label>
                     </div>
+                    {error.email && (
+                        <p className={styles.error}>{error.email}</p>
+                    )}
+
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="password"
@@ -80,6 +104,10 @@ function LoginForm() {
                             Password
                         </label>
                     </div>
+                    {error.password && (
+                        <p className={styles.error}>{error.password}</p>
+                    )}
+
                     <input
                         type="submit"
                         value="Login"

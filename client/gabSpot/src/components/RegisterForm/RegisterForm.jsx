@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import styles from "./RegisterForm.module.css";
 import { register } from "../../services/userService";
 import AuthContext from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
     const { changeAuthState } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: "",
         firstName: "",
@@ -14,6 +16,35 @@ function RegisterForm() {
         password: "",
         rePassword: "",
     });
+
+    const [error, setError] = useState({});
+
+    const validate = () => {
+        let newErrors = {};
+        if (!formData.username.trim()) {
+            newErrors.username = "Username is required.";
+        }
+        if (!formData.firstName.trim()) {
+            newErrors.firstName = "First name is required.";
+        }
+        if (!formData.lastName.trim()) {
+            newErrors.lastName = "Last name is required.";
+        }
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required.";
+        }
+        if (!formData.profileImage.trim()) {
+            newErrors.profileImage = "Profile image is required.";
+        }
+        if (!formData.password.trim()) {
+            newErrors.password = "Password is required.";
+        }
+        if (!formData.rePassword.trim()) {
+            newErrors.rePassword = "Re-Password is required.";
+        }
+        setError(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const changeHandler = (e) => {
         setFormData((oldState) => ({
@@ -25,26 +56,32 @@ function RegisterForm() {
     const submitHandler = async (e) => {
         e.preventDefault();
 
+        if (!validate()) {
+            return;
+        }
+
         try {
             const res = await register(formData);
 
-            if (!res.error) {
-                setFormData({
-                    username: "",
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    profileImage: "",
-                    password: "",
-                    rePassword: "",
-                });
+            if (res.error) {
+                throw new Error(res.error);
             }
 
+            setFormData({
+                username: "",
+                firstName: "",
+                lastName: "",
+                email: "",
+                profileImage: "",
+                password: "",
+                rePassword: "",
+            });
+            setError({});
             changeAuthState(res);
-
-            console.log(formData);
+            navigate("/");
         } catch (error) {
-            console.log(error);
+            setError({ submit: error.error });
+            console.log("error submit" + error.error);
         }
     };
 
@@ -55,6 +92,10 @@ function RegisterForm() {
                     <header>
                         <h3>Sign Up</h3>
                     </header>
+
+                    {error.submit && (
+                        <p className={styles.error}>{error.submit}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="text"
@@ -67,6 +108,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="username">Username</label>
                     </div>
+                    {error.username && (
+                        <p className={styles.error}>{error.username}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="text"
@@ -79,6 +123,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="firstName">First Name</label>
                     </div>
+                    {error.firstName && (
+                        <p className={styles.error}>{error.firstName}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="text"
@@ -91,6 +138,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="lastName">Last Name</label>
                     </div>
+                    {error.lastName && (
+                        <p className={styles.error}>{error.lastName}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="text"
@@ -103,6 +153,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="email">Email</label>
                     </div>
+                    {error.email && (
+                        <p className={styles.error}>{error.email}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="text"
@@ -115,6 +168,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="profileImage">Profile image URL</label>
                     </div>
+                    {error.profileImage && (
+                        <p className={styles.error}>{error.profileImage}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="password"
@@ -127,6 +183,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="password">Password</label>
                     </div>
+                    {error.password && (
+                        <p className={styles.error}>{error.password}</p>
+                    )}
                     <div className={`${styles.field} ${styles.fieldText}`}>
                         <input
                             type="password"
@@ -139,6 +198,9 @@ function RegisterForm() {
                         />
                         <label htmlFor="rePassword">Confirm Password</label>
                     </div>
+                    {error.rePassword && (
+                        <p className={styles.error}>{error.rePassword}</p>
+                    )}
                     <input
                         type="submit"
                         value="Sign Up"

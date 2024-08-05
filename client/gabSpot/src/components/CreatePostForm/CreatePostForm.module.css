@@ -75,6 +75,12 @@
     outline: none;
 }
 
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
 @media (width > 800px) {
     .formWrapper {
         display: flex;

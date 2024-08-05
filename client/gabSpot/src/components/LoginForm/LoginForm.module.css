@@ -87,3 +87,9 @@
     color: orange;
     padding: 0em 0.5em;
 }
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
