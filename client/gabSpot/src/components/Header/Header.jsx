@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 
 function Header() {
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth, userId } = useContext(AuthContext);
     return (
         <>
             <header className={styles["site-header"]}>
@@ -26,7 +26,9 @@ function Header() {
                                     <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link to="/profile">Profile</Link>
+                                    <Link to={`/profile/${userId}`}>
+                                        Profile
+                                    </Link>
                                 </li>
                                 <li>
                                     <Link to="/logout">Logout</Link>

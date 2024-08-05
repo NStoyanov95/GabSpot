@@ -17,7 +17,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
-                <Route path="/profile" element={<ProfileCard />} />
+                <Route path="/profile/:userId" element={<ProfileCard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/details/:postId" element={<DetailsCard />} />
                 <Route path="/register" element={<RegisterForm />} />

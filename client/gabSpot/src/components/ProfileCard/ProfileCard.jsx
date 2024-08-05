@@ -1,33 +1,23 @@
 import styles from "./ProfileCard.module.css";
+import { useEffect, useState } from "react";
+import { getUserWithPosts } from "../../services/userService";
+import { Link, useParams } from "react-router-dom";
+
 function ProfileCard() {
-    const user = {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        avatarUrl: "https://via.placeholder.com/150/C0C0C0/000?text=JD",
-        likedPosts: [
-            {
-                id: 1,
-                imageUrl: "https://via.placeholder.com/200/FFD700/000?text=JS",
-            },
-            {
-                id: 2,
-                imageUrl:
-                    "https://via.placeholder.com/200/008000/FFF?text=React",
-            },
-        ],
-        posts: [
-            {
-                id: 1,
-                imageUrl:
-                    "https://via.placeholder.com/200/0000FF/808080?text=Vue",
-            },
-            {
-                id: 2,
-                imageUrl:
-                    "https://via.placeholder.com/200/FF6347/FFFFFF?text=Angular",
-            },
-        ],
-    };
+    const { userId } = useParams();
+    const [user, setUser] = useState({});
+    const [createdPost, setCreatedPost] = useState([]);
+    const [likedPost, setLikedPost] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const data = await getUserWithPosts(userId);
+            setUser(data.user);
+            setCreatedPost(data.createdPosts);
+            setLikedPost(data.likedPosts);
+            console.log(data);
+        })();
+    }, []);
 
     return (
         <div className={styles.profileContainer}>
@@ -37,35 +27,57 @@ function ProfileCard() {
                     alt="Profile Avatar"
                     className={styles.avatar}
                 />
-                <h1 className={styles.name}>{user.name}</h1>
+                <h2 className={styles.name}>
+                    {user.firstName} {user.lastName}
+                </h2>
                 <p className={styles.email}>{user.email}</p>
             </div>
             <div className={styles.postsContainer}>
                 <div className={styles.section}>
-                    <h2>My Posts</h2>
-                    <div className={styles.postsGrid}>
-                        {user.posts.map((post) => (
-                            <img
-                                key={post.id}
-                                src={post.imageUrl}
-                                alt="My Post"
-                                className={styles.postImage}
-                            />
-                        ))}
-                    </div>
+                    <h3>My Posts</h3>
+                    {createdPost.length !== 0 ? (
+                        <div className={styles.postsGrid}>
+                            {createdPost.map((post) => (
+                                <Link
+                                    to={`/details/${post._id}`}
+                                    key={post._id}
+                                >
+                                    <img
+                                        src={post.image}
+                                        alt="My Post"
+                                        className={styles.postImage}
+                                    />
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            <p>You haven't created any posts yet.</p>
+                        </div>
+                    )}
                 </div>
                 <div className={styles.section}>
-                    <h2>Liked Posts</h2>
-                    <div className={styles.postsGrid}>
-                        {user.likedPosts.map((post) => (
-                            <img
-                                key={post.id}
-                                src={post.imageUrl}
-                                alt="Liked Post"
-                                className={styles.postImage}
-                            />
-                        ))}
-                    </div>
+                    <h3>Liked Posts</h3>
+                    {likedPost.length !== 0 ? (
+                        <div className={styles.postsGrid}>
+                            {likedPost.map((post) => (
+                                <Link
+                                    to={`/details/${post._id}`}
+                                    key={post._id}
+                                >
+                                    <img
+                                        src={post.image}
+                                        alt="Liked Post"
+                                        className={styles.postImage}
+                                    />
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            <p>You haven't liked any posts yet.</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
