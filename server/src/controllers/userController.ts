@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { UserData, UserType } from "../types/User";
+import { UserWithPostsType, UserData, UserType } from "../types/User";
 
 import userService from "../services/userService";
 import { CustomRequest } from "../types/CustomRequest";
@@ -114,6 +114,16 @@ router.get("/verifyUser", async (req: Request, res: Response) => {
         res.json(verifyToken(token));
     } catch (error) {
         return null;
+    }
+});
+
+router.get("/withPosts/:userId", async (req: Request, res: Response) => {
+    const userId = req.params.userId;
+    try {
+        const user: any = await userService.getUserWithPosts(userId);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).send({ error: "An unknown error occurred" });
     }
 });
 

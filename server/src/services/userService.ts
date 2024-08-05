@@ -3,6 +3,7 @@ import { Token } from "../types/Token";
 import { UserData, UserType } from "../types/User";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import Post from "../models/Post";
 
 const getUser = (userId: string): Promise<UserType | null> =>
     User.findById(userId).select("-password");
@@ -68,4 +69,13 @@ function generateAccessToken(user: UserType): Token {
     };
 }
 
-export default { register, login, getUser, getAllUsers };
+async function getUserWithPosts(userId: string) {
+    const user = await User.findById(userId).select("-password");
+    const [createdPosts, likedPosts] = await Promise.all([
+        Post.find({ author: user?.email }),
+        Post.find({ likes: userId }),
+    ]);
+    return { user, createdPosts, likedPosts };
+}
+
+export default { register, login, getUser, getAllUsers, getUserWithPosts };

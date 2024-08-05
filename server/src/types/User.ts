@@ -1,4 +1,5 @@
 import { Schema, Types } from "mongoose";
+import { PostType } from "./Post";
 
 export interface UserType {
     _id?: Types.ObjectId;
@@ -20,4 +21,9 @@ export interface UserData {
     email: string;
     password: string;
     rePassword?: string;
+}
+
+export interface UserWithPostsType extends UserData {
+    createdPosts: PostType[];
+    likedPosts: PostType[];
 }
