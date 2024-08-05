@@ -26,10 +26,7 @@ function Header() {
                                     <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Messages</Link>
-                                </li>
-                                <li>
-                                    <Link to="">Profile</Link>
+                                    <Link to="/profile">Profile</Link>
                                 </li>
                                 <li>
                                     <Link to="/logout">Logout</Link>

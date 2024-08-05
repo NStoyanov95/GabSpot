@@ -10,12 +10,14 @@ import EditPostForm from "./components/EditPostForm/EditPostForm";
 import { Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import Logout from "./components/Logout/Logout";
+import ProfileCard from "./components/ProfileCard/ProfileCard";
 function App() {
     return (
         <AuthContextProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
+                <Route path="/profile" element={<ProfileCard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/details/:postId" element={<DetailsCard />} />
                 <Route path="/register" element={<RegisterForm />} />
