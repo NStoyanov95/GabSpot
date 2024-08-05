@@ -26,3 +26,8 @@ export const verifyUser = async () => {
 export const logout = async () => {
     const data = await requester("users/logout");
 };
+
+export const getUserWithPosts = async (userId) => {
+    const data = await requester(`users/withPosts/${userId}`);
+    return data;
+};
