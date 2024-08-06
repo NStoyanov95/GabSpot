@@ -1,24 +1,20 @@
+import { Link } from "react-router-dom";
 import style from "./Menu.module.css";
-function Menu(params) {
+function Menu({ userId }) {
     return (
         <>
             <div className={style.menu}>
                 <ul>
                     <li>
-                        <a href="#">
+                        <Link to={`/profile/${userId}`}>
                             <i className="fas fa-user"></i> Profile
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#">
-                            <i className="fas fa-comment"></i> Messages
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <Link to="/logout">
                             <i className="fas fa-sign-out-alt logout-icon"></i>{" "}
                             Logout
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>

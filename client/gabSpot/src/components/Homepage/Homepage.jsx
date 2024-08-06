@@ -1,5 +1,6 @@
 import styles from "./Homepage.module.css";
 import videoFile from "../../assets/backgroundVideo.mp4";
+import { Link } from "react-router-dom";
 
 function Homepage() {
     return (
@@ -79,12 +80,16 @@ function Homepage() {
                         started.
                     </p>
                     <div className={styles["join-links"]}>
-                        <a href="login.html" className={styles.btn}>
+                        <Link
+                            to="/login"
+                            href="login.html"
+                            className={styles.btn}
+                        >
                             <i className="fas fa-sign-in-alt"></i> Login
-                        </a>
-                        <a href="register.html" className={styles.btn}>
+                        </Link>
+                        <Link to="/register" className={styles.btn}>
                             <i className="fas fa-user-plus"></i> Register
-                        </a>
+                        </Link>
                     </div>
                 </section>
                 <section className={styles["why-us"]}>

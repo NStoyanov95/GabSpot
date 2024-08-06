@@ -24,7 +24,7 @@ function LeftSideMenu(params) {
             {isAuth ? (
                 <>
                     <ProfileInfo currentUser={currentUser} />
-                    <Menu />
+                    <Menu userId={userId} />
                 </>
             ) : (
                 <Link to="/login" className={style.link}>
