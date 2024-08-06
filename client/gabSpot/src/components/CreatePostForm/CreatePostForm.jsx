@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./CreatePostForm.module.css";
 import { createPost } from "../../services/postService";
+import { useNavigate } from "react-router-dom";
 
 function CreatePostForm() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         image: "",
         content: "",
@@ -45,6 +47,7 @@ function CreatePostForm() {
             }
             setFormData({ image: "", content: "" });
             setErrors({});
+            navigate("/dashboard");
         } catch (error) {
             setErrors({ submit: error.message });
         }
