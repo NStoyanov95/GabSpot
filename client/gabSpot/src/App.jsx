@@ -14,6 +14,7 @@ import ProfileCard from "./components/ProfileCard/ProfileCard";
 import OwnerProtectedRoutes from "./guards/OwnerProtectedRoutes";
 import GuestProtectedRoute from "./guards/GuestProtectedRoute";
 import UserProtectedRoute from "./guards/UserProtectedRoute";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 function App() {
     return (
         <AuthContextProvider>
@@ -40,6 +41,7 @@ function App() {
                         element={<EditPostForm />}
                     />
                 </Route>
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </AuthContextProvider>
     );
