@@ -12,6 +12,7 @@ import {
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 import AuthContext from "../../contexts/AuthContext";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 function DetailsCard() {
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ function DetailsCard() {
     const [likes, setLikes] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
     const [newComment, setNewComment] = useState("");
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const { email, userId, isAuth } = useContext(AuthContext);
 
     useEffect(() => {
@@ -136,7 +138,9 @@ function DetailsCard() {
                                         </Link>
                                         <button
                                             className={styles["delete-btn"]}
-                                            onClick={onPostDelete}
+                                            onClick={() =>
+                                                setShowDeleteModal(true)
+                                            }
                                         >
                                             <i className="fas fa-trash" />{" "}
                                             Delete
@@ -176,6 +180,12 @@ function DetailsCard() {
                     </div>
                 </div>
             </div>
+            {showDeleteModal && (
+                <DeleteModal
+                    onCancel={() => setShowDeleteModal(false)}
+                    onConfirm={onPostDelete}
+                />
+            )}
         </div>
     );
 }
