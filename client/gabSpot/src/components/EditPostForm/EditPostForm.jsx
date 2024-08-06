@@ -9,6 +9,7 @@ function EditPostForm(params) {
         image: "",
         content: "",
     });
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         (async () => {
@@ -18,7 +19,22 @@ function EditPostForm(params) {
                 content: post.content,
             });
         })();
-    }, [params.postId]);
+    }, [postId]);
+
+    const validate = () => {
+        let newErrors = {};
+
+        if (!formData.image.trim()) {
+            newErrors.image = "Image URL is required.";
+        }
+
+        if (!formData.content.trim()) {
+            newErrors.content = "Content is required.";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const changeHandler = (e) => {
         setFormData((oldState) => ({
@@ -29,14 +45,22 @@ function EditPostForm(params) {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+
+        if (!validate()) {
+            return;
+        }
         try {
             const res = await editPost(postId, formData);
-
+            if (res.error) {
+                throw new Error(res.error);
+            }
+            setFormData({ image: "", content: "" });
+            setErrors({});
             if (res) {
                 navigate(`/details/${postId}`);
             }
         } catch (error) {
-            console.log(error);
+            setErrors({ submit: error.error });
         }
     };
     return (
@@ -65,6 +89,9 @@ function EditPostForm(params) {
                                 value={formData.image}
                                 onChange={changeHandler}
                             />
+                            {errors.image && (
+                                <p className={styles.error}>{errors.image}</p>
+                            )}
                         </div>
                         <div className={styles.field}>
                             <label htmlFor="content">Content</label>
@@ -74,6 +101,9 @@ function EditPostForm(params) {
                                 value={formData.content}
                                 onChange={changeHandler}
                             />
+                            {errors.content && (
+                                <p className={styles.error}>{errors.content}</p>
+                            )}
                         </div>
                         <input
                             type="submit"
@@ -81,6 +111,9 @@ function EditPostForm(params) {
                             className={styles.submitBtn}
                             onClick={submitHandler}
                         />
+                        {errors.submit && (
+                            <p className={styles.error}>{errors.submit}</p>
+                        )}
                     </form>
                 </div>
             </div>
