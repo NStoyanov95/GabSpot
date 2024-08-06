@@ -48,7 +48,6 @@ function LoginForm() {
             setError({});
             changeAuthState(user);
             navigate("/");
-            console.log(user);
         } catch (error) {
             setError({ submit: error.error });
             console.log("error submit" + error.error);
