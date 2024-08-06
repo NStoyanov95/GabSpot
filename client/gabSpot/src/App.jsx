@@ -11,20 +11,35 @@ import { Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import Logout from "./components/Logout/Logout";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
+import OwnerProtectedRoutes from "./guards/OwnerProtectedRoutes";
+import GuestProtectedRoute from "./guards/GuestProtectedRoute";
+import UserProtectedRoute from "./guards/UserProtectedRoute";
 function App() {
     return (
         <AuthContextProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
-                <Route path="/profile/:userId" element={<ProfileCard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/details/:postId" element={<DetailsCard />} />
-                <Route path="/register" element={<RegisterForm />} />
-                <Route path="/login" element={<LoginForm />} />
-                <Route path="/createpost" element={<CreatePostForm />} />
-                <Route path="/editPost/:postId" element={<EditPostForm />} />
-                <Route path="/logout" element={<Logout />} />
+
+                <Route element={<UserProtectedRoute />}>
+                    <Route path="/profile/:userId" element={<ProfileCard />} />
+                    <Route path="/createpost" element={<CreatePostForm />} />
+                    <Route path="/logout" element={<Logout />} />
+                </Route>
+
+                <Route element={<GuestProtectedRoute />}>
+                    <Route path="/login" element={<LoginForm />} />
+                    <Route path="/register" element={<RegisterForm />} />
+                </Route>
+
+                <Route element={<OwnerProtectedRoutes />}>
+                    <Route
+                        path="/editPost/:postId"
+                        element={<EditPostForm />}
+                    />
+                </Route>
             </Routes>
         </AuthContextProvider>
     );
