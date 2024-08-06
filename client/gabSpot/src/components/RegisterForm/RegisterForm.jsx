@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import styles from "./RegisterForm.module.css";
 import { register } from "../../services/userService";
 import AuthContext from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function RegisterForm() {
     const { changeAuthState } = useContext(AuthContext);
@@ -210,7 +210,7 @@ function RegisterForm() {
                     <div className={styles.loginRedirect}>
                         <p>
                             Already have an account?
-                            <a href="#">Login Here</a>
+                            <Link to="/login">Login Here</Link>
                         </p>
                     </div>
                 </form>

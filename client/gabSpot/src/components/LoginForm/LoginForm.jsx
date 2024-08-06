@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import styles from "./LoginForm.module.css";
 import { login } from "../../services/userService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 
 function LoginForm() {
@@ -116,7 +116,7 @@ function LoginForm() {
                     <div className={styles.loginRedirect}>
                         <p>
                             Don't have an account?
-                            <a href="#">Register Here</a>
+                            <Link to="/register">Register Here</Link>
                         </p>
                     </div>
                 </form>
