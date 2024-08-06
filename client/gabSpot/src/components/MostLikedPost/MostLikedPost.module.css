@@ -13,7 +13,7 @@
 }
 .last-post .media img {
     display: blog;
-    width: 500px;
+    max-width: 400px;
     aspect-ratio: 3/2;
 }
 .last-post .likes {
