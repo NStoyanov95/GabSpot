@@ -1,8 +1,11 @@
 import styles from "./Homepage.module.css";
 import videoFile from "../../assets/backgroundVideo.mp4";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
 
 function Homepage() {
+    const { isAuth, username } = useContext(AuthContext);
     return (
         <div className={styles.homepage}>
             <div className={styles["video-background"]}>
@@ -74,23 +77,32 @@ function Homepage() {
                     </div>
                 </section>
                 <section className={styles.join}>
-                    <h2>How to Join</h2>
-                    <p>
-                        Ready to be a part of GabSpot? It’s simple to get
-                        started.
-                    </p>
-                    <div className={styles["join-links"]}>
-                        <Link
-                            to="/login"
-                            href="login.html"
-                            className={styles.btn}
-                        >
-                            <i className="fas fa-sign-in-alt"></i> Login
-                        </Link>
-                        <Link to="/register" className={styles.btn}>
-                            <i className="fas fa-user-plus"></i> Register
-                        </Link>
-                    </div>
+                    {isAuth ? (
+                        <h3>
+                            Welcome back, <span>{username}</span>
+                        </h3>
+                    ) : (
+                        <>
+                            <h2>How to Join</h2>
+                            <p>
+                                Ready to be a part of GabSpot? It’s simple to
+                                get started.
+                            </p>
+                            <div className={styles["join-links"]}>
+                                <Link
+                                    to="/login"
+                                    href="login.html"
+                                    className={styles.btn}
+                                >
+                                    <i className="fas fa-sign-in-alt"></i> Login
+                                </Link>
+                                <Link to="/register" className={styles.btn}>
+                                    <i className="fas fa-user-plus"></i>{" "}
+                                    Register
+                                </Link>
+                            </div>
+                        </>
+                    )}
                 </section>
                 <section className={styles["why-us"]}>
                     <h2>Why Choose GabSpot?</h2>
