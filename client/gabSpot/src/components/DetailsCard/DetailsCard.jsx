@@ -13,6 +13,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
 import AuthContext from "../../contexts/AuthContext";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import { formatDate } from "../../utils/formatDate";
 
 function DetailsCard() {
     const navigate = useNavigate();
@@ -94,7 +95,7 @@ function DetailsCard() {
                                     {post.author}
                                 </h4>
                                 <p className={styles["post-date"]}>
-                                    Posted on {post.createdAt}
+                                    Posted on {formatDate(post.createdAt)}
                                 </p>
                             </div>
                         </div>
