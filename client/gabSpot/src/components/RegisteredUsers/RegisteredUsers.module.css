@@ -13,6 +13,8 @@
     align-items: center;
     justify-content: space-between;
     background-color: rgba(123, 105, 2, 0.293);
+    border-radius: 0.5em;
+    overflow: hidden;
 }
 .user-list img {
     width: 60px;
