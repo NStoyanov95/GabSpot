@@ -43,22 +43,30 @@ input {
 
 @media (width > 800px) {
     html {
-        font-size: 16px;
+        font-size: 14px;
     }
     .dashboard {
         display: flex;
-        width: 80%;
+        width: 100%;
     }
 }
 @media (width > 1500px) {
     html {
-        font-size: 18px;
+        font-size: 16px;
     }
     .dashboard {
-        width: 60%;
+        width: 80%;
     }
     .content {
         width: 60%;
+    }
+}
+@media (width > 2000px) {
+    .dashboard {
+        width: 60%;
+    }
+    html {
+        font-size: 18px;
     }
 }
 ::-webkit-scrollbar {
