@@ -15,21 +15,19 @@ function MostLikedPost() {
     }, []);
     return (
         <>
-            <div className={style["right-side-menu"]}>
-                <Link to={`/details/${post._id}`}>
-                    <div className={style["last-post"]}>
-                        <div className="header">
-                            <h5>Most Liked Post</h5>
-                        </div>
-                        <div className={style["media"]}>
-                            <img src={post.image} />
-                        </div>
-                        <div className={style["likes"]}>
-                            <p>Likes: {likeLength}</p>
-                        </div>
+            <Link to={`/details/${post._id}`}>
+                <div className={style["last-post"]}>
+                    <div className="header">
+                        <h5>Most Liked Post</h5>
                     </div>
-                </Link>
-            </div>
+                    <div className={style["media"]}>
+                        <img src={post.image} />
+                    </div>
+                    <div className={style["likes"]}>
+                        <p>Likes: {likeLength}</p>
+                    </div>
+                </div>
+            </Link>
         </>
     );
 }

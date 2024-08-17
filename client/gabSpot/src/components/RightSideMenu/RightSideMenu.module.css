@@ -1,0 +1,6 @@
+.right-side-menu {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
