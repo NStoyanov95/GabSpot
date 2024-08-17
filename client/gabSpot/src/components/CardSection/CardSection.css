@@ -13,3 +13,9 @@
     gap: 1em;
     justify-content: center;
 }
+.no-posts {
+    font-size: 2em;
+    text-decoration: underline;
+    font-style: italic;
+    color: whitesmoke;
+}

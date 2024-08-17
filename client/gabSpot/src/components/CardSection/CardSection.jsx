@@ -3,6 +3,7 @@ import "./CardSection.css";
 import { useEffect, useState } from "react";
 import { getAllPosts } from "../../services/postService";
 import Loader from "../Loader/Loader";
+import { Link } from "react-router-dom";
 function CardSection() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +27,10 @@ function CardSection() {
             <div className="card-container">
                 {isLoading ? (
                     <Loader />
+                ) : posts.length === 0 ? (
+                    <Link to={"/createpost"} className="no-posts">
+                        No posts yet, be the first!{" "}
+                    </Link>
                 ) : (
                     posts.map((post) => <Card key={post._id} post={post} />)
                 )}
