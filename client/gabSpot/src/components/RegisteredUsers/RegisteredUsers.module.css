@@ -1,0 +1,29 @@
+.registered-users {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: rgba(0, 0, 0, 0.305);
+    border-radius: 0.3em;
+    box-shadow: 0 0 10px -5px orange;
+    color: whitesmoke;
+    padding: 1em;
+}
+.user-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(123, 105, 2, 0.293);
+}
+.user-list img {
+    width: 60px;
+    aspect-ratio: 1/1;
+}
+.user-list p {
+    font-size: 1.5em;
+}
+.buttons {
+    display: flex;
+    gap: 1em;
+    padding: 0 1em;
+    font-size: 1.5em;
+}
