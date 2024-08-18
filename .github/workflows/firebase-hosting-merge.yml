@@ -16,10 +16,16 @@ jobs:
         with:
           node-version: '18'  # Adjust this to match your project's requirements
 
-      - name: Change directory and install dependencies
+      - name: Change directory and install dependencies with retry
         run: |
           cd client/gabSpot
-          npm install
+          n=0
+          until [ "$n" -ge 5 ]
+          do
+            npm install && break  # Attempts to install dependencies
+            n=$((n+1))  # Increment the counter
+            sleep 15  # Wait for 15 seconds before retrying
+          done
 
       - name: Build the project
         run: |
