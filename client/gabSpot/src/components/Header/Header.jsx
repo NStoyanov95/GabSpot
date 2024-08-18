@@ -10,7 +10,7 @@ function Header() {
             <header className={styles["site-header"]}>
                 <div className={styles["site-logo"]}>
                     <Link to="/">
-                        <h2>GapSpot2^^</h2>
+                        <h2>GapSpot^^</h2>
                     </Link>
                 </div>
                 <div className={styles["navigation-menu"]}>
