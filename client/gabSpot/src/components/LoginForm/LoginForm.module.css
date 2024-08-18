@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5em;
+    gap: 4em;
     box-shadow: 0 0 3px 0 orange;
 }
 
@@ -78,7 +78,7 @@
 }
 
 .loginRedirect {
-    font-size: 0.8em;
+    font-size: 1.5em;
     font-style: italic;
     color: #ccc;
 }
@@ -99,7 +99,13 @@
     .formContainer {
         max-width: 400px;
     }
+    .loginForm {
+        gap: 1.5em;
+    }
     .field {
         width: 70%;
+    }
+    .loginRedirect {
+        font-size: 0.8em;
     }
 }
