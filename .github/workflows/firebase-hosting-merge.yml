@@ -10,11 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Change to gabSpot Directory and Build
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify the Node.js version you need
+
+      - name: Change directory and install dependencies
         run: |
           cd client/gabSpot
-          npm run build
+          npm install  # Installs all dependencies including Vite
+
+      - name: Build the project
+        run: |
+          cd client/gabSpot
+          npm run build  # Runs the build script which uses Vite
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
