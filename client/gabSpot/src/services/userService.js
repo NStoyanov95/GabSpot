@@ -31,3 +31,8 @@ export const getUserWithPosts = async (userId) => {
     const data = await requester(`users/withPosts/${userId}`);
     return data;
 };
+
+export const getAllUsers = async () => {
+    const data = await requester("/users");
+    return data;
+};
