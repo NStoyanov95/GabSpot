@@ -66,6 +66,7 @@
 }
 
 .submitBtn {
+    width: 100%;
     display: block;
     padding: 0.5em 1em;
     border-radius: 0.3em;
@@ -107,5 +108,8 @@
     }
     .loginRedirect {
         font-size: 0.8em;
+    }
+    .submitBtn {
+        width: 20%;
     }
 }
