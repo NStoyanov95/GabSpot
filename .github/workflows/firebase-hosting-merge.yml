@@ -14,21 +14,23 @@ jobs:
       - name: Set up Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Specify the Node.js version you need
+          node-version: '16'  # Adjust this to match your project's requirements
 
       - name: Change directory and install dependencies
         run: |
           cd client/gabSpot
-          npm install  # Installs all dependencies including Vite
+          npm install
 
       - name: Build the project
         run: |
           cd client/gabSpot
-          npm run build  # Runs the build script which uses Vite
+          npm run build
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIREBASE_DEPLOY_GABSPOT }}
           channelId: live
           projectId: firebase-deploy-gabspot
+          entryPoint: client/gabSpot  # Pointing to the directory where firebase.json is located
