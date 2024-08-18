@@ -1,5 +1,5 @@
 .site-header {
-    box-shadow: 0 0 3px 0 whitesmoke;
+    box-shadow: 0 0 3px 0 rgba(255, 140, 0, 0.571);
     padding: 1em 2em;
     display: flex;
     justify-content: space-between;
@@ -7,7 +7,7 @@
     margin-bottom: 1em;
 }
 .site-header .site-logo {
-    color: white;
+    color: darkorange;
 }
 
 .functions {
@@ -33,10 +33,10 @@
     overflow: hidden;
 }
 .navigation-menu > .menu-list li a {
-    padding: 0.6em 1em;
-    font-size: 0.8em;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
 }
 .navigation-menu > .menu-list li.create-post {
-    background-color: orange;
+    background-color: darkorange;
     color: black;
 }
