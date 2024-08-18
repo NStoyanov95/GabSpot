@@ -29,7 +29,7 @@
     position: relative;
     flex-direction: column-reverse;
     color: rgb(129, 128, 128);
-    width: 70%;
+    width: 100%;
 }
 
 .field > input:focus {
@@ -97,5 +97,8 @@
 @media (width > 800px) {
     .formContainer {
         max-width: 400px;
+    }
+    .field {
+        width: 70%;
     }
 }
