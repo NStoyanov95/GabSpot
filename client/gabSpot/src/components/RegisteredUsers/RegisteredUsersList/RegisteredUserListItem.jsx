@@ -10,7 +10,7 @@ function RegisteredUsersListItem({ user }) {
                     {user.firstName} {user.lastName}
                 </p>
                 <div className={style["buttons"]}>
-                    <Link>
+                    <Link to={`/profile/${user._id}`}>
                         <i className="fas fa-user"></i>
                     </Link>
                     <Link>
