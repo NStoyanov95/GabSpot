@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Change to project directory and build
-        run: |
-          cd client/gabSpot
-          npm install
-          npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIREBASE_DEPLOY_GABSPOT }}
-          projectId: firebase-deploy-gabspot
+      run: |
+        cd client/gabSpot
+        npm install
+        npm run build
+    - uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
+        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIREBASE_DEPLOY_GABSPOT }}
+        projectId: firebase-deploy-gabspot
