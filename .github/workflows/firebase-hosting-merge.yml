@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Change to gabSpot Directory
-        run: cd client/gabSpot
+      - run: cd client/gabSpot
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
