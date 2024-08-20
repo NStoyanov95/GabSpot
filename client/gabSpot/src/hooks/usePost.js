@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllPosts } from "../services/postService";
+import { getAllPosts, getSinglePost } from "../services/postService";
 
-const useGetAllPosts = () => {
+export const useGetAllPosts = () => {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -22,4 +22,30 @@ const useGetAllPosts = () => {
     return { posts, isLoading };
 };
 
-export default useGetAllPosts;
+export const useGetOnePost = (postId) => {
+    const [post, setPost] = useState({});
+    const [likes, setLikes] = useState([]);
+    const [likeCount, setLikeCount] = useState(0);
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const post = await getSinglePost(postId);
+            setPost(post);
+            setComments(post.comments || []);
+            setLikeCount(post.likes.length);
+            setLikes(post.likes);
+        })();
+    }, [postId]);
+
+    return {
+        post,
+        setPost,
+        likes,
+        setLikes,
+        likeCount,
+        setLikeCount,
+        comments,
+        setComments,
+    };
+};
