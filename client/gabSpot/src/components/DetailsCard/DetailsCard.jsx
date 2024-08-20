@@ -5,7 +5,6 @@ import {
     deleteComment,
     deletePost,
     dislikePost,
-    getSinglePost,
     likePost,
     postComment,
 } from "../../services/postService";
@@ -14,27 +13,24 @@ import Comments from "../Comments/Comments";
 import AuthContext from "../../contexts/AuthContext";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { formatDate } from "../../utils/formatDate";
+import { useGetOnePost } from "../../hooks/usePost";
 
 function DetailsCard() {
     const navigate = useNavigate();
     const { postId } = useParams();
-    const [post, setPost] = useState({});
-    const [comments, setComments] = useState([]);
-    const [likes, setLikes] = useState([]);
-    const [likeCount, setLikeCount] = useState(0);
     const [newComment, setNewComment] = useState("");
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const { email, userId, isAuth } = useContext(AuthContext);
-
-    useEffect(() => {
-        (async () => {
-            const post = await getSinglePost(postId);
-            setPost(post);
-            setComments(post.comments || []);
-            setLikeCount(post.likes.length);
-            setLikes(post.likes);
-        })();
-    }, [postId]);
+    const {
+        post,
+        setPost,
+        likes,
+        setLikes,
+        likeCount,
+        setLikeCount,
+        comments,
+        setComments,
+    } = useGetOnePost(postId);
 
     const changeHandler = (e) => {
         setNewComment(e.target.value);
