@@ -3,7 +3,7 @@ import "./CardSection.css";
 
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
-import useGetAllPosts from "../../hooks/usePost";
+import { useGetAllPosts } from "../../hooks/usePost";
 function CardSection() {
     const { posts, isLoading } = useGetAllPosts();
 
