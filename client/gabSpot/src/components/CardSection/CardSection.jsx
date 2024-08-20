@@ -1,26 +1,11 @@
 import Card from "../Card/Card";
 import "./CardSection.css";
-import { useEffect, useState } from "react";
-import { getAllPosts } from "../../services/postService";
+
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
+import useGetAllPosts from "../../hooks/usePost";
 function CardSection() {
-    const [posts, setPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                setIsLoading(true);
-                const posts = await getAllPosts();
-                setPosts(posts);
-                setIsLoading(false);
-            } catch (error) {
-                setIsLoading(false);
-                console.log(error);
-            }
-        })();
-    }, []);
+    const { posts, isLoading } = useGetAllPosts();
 
     return (
         <div className="card-section">
