@@ -39,7 +39,7 @@ function DetailsCard() {
         setNewComment(e.target.value);
     };
 
-    const onSubmit = async (e) => {
+    const onPostComment = async (e) => {
         e.preventDefault();
         if (newComment === "") {
             return;
@@ -170,7 +170,7 @@ function DetailsCard() {
                                     onChange={changeHandler}
                                     value={newComment}
                                 />
-                                <button type="submit" onClick={onSubmit}>
+                                <button type="submit" onClick={onPostComment}>
                                     Post Comment
                                 </button>
                             </form>
