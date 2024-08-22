@@ -38,14 +38,47 @@ export const useGetOnePost = (postId) => {
         })();
     }, [postId]);
 
+    const setPostHandler = (post) => {
+        setPost(post);
+    };
+
+    const setLikesHandler = (userId) => {
+        setLikes((oldState) => [...oldState, userId]);
+    };
+
+    const setDislikeHandler = (userId) => {
+        setLikes((oldLikes) => oldLikes.filter((id) => id !== userId));
+    };
+
+    const setLikeCountHandler = () => {
+        setLikeCount((oldState) => oldState + 1);
+    };
+
+    const setDislikeCountHandler = () => {
+        setLikeCount((oldState) => oldState - 1);
+    };
+
+    const setCommentsHandler = (comment) => {
+        setComments(comment);
+    };
+
+    const setCommentsDeleteHandler = (commentId) => {
+        setComments((oldState) =>
+            oldState.filter((comment) => comment._id !== commentId)
+        );
+    };
+
     return {
         post,
-        setPost,
+        setPostHandler,
         likes,
-        setLikes,
+        setLikesHandler,
         likeCount,
-        setLikeCount,
+        setLikeCountHandler,
+        setDislikeCountHandler,
         comments,
-        setComments,
+        setCommentsHandler,
+        setCommentsDeleteHandler,
+        setDislikeHandler,
     };
 };

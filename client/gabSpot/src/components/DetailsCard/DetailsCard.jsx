@@ -23,13 +23,16 @@ function DetailsCard() {
     const { email, userId, isAuth } = useContext(AuthContext);
     const {
         post,
-        setPost,
+        setPostHandler,
         likes,
-        setLikes,
+        setLikesHandler,
         likeCount,
-        setLikeCount,
+        setLikeCountHandler,
+        setDislikeCountHandler,
         comments,
-        setComments,
+        setCommentsHandler,
+        setCommentsDeleteHandler,
+        setDislikeHandler,
     } = useGetOnePost(postId);
 
     const changeHandler = (e) => {
@@ -42,15 +45,13 @@ function DetailsCard() {
             return;
         }
         const result = await postComment(postId, newComment, email);
-        setComments(result.comments);
+        setCommentsHandler(result.comments);
         setNewComment("");
     };
 
     const onCommentDelete = async (commentId) => {
         const result = await deleteComment(postId, commentId);
-        setComments((oldstate) =>
-            oldstate.filter((comment) => comment._id !== commentId)
-        );
+        setCommentsDeleteHandler(commentId);
     };
 
     const onPostDelete = async () => {
@@ -60,16 +61,16 @@ function DetailsCard() {
 
     const onPostLike = async () => {
         const result = await likePost(postId, userId);
-        setLikeCount((oldState) => oldState + 1);
-        setLikes((oldLikes) => [...oldLikes, userId]);
-        setPost(result);
+        setLikeCountHandler();
+        setLikesHandler(userId);
+        setPostHandler(result);
     };
 
     const onPostDislike = async () => {
         const result = await dislikePost(postId, userId);
-        setLikeCount((oldState) => oldState - 1);
-        setLikes((oldLikes) => oldLikes.filter((id) => id !== userId));
-        setPost(result);
+        setDislikeCountHandler();
+        setDislikeHandler(userId);
+        setPostHandler(result);
     };
 
     const isAuthor = email === post.author;
