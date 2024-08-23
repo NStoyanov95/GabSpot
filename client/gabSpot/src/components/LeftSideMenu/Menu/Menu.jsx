@@ -11,6 +11,11 @@ function Menu({ userId }) {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/dashboard">
+                            <i class="fas fa-comment"></i> Messages
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/logout">
                             <i className="fas fa-sign-out-alt logout-icon"></i>{" "}
                             Logout
