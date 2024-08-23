@@ -47,7 +47,7 @@ input {
     }
     .dashboard {
         display: flex;
-        width: 100%;
+        width: 90%;
     }
 }
 @media (width > 1500px) {
