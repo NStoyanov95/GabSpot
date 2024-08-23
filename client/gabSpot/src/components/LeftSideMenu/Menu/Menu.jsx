@@ -5,22 +5,24 @@ function Menu({ userId }) {
         <>
             <div className={style.menu}>
                 <ul>
-                    <li>
-                        <Link to={`/profile/${userId}`}>
+                    <Link to={`/profile/${userId}`}>
+                        <li className={style["list-item"]}>
                             <i className="fas fa-user"></i> Profile
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/dashboard">
-                            <i class="fas fa-comment"></i> Messages
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/logout">
+                        </li>
+                    </Link>
+
+                    <Link to="/dashboard">
+                        <li className={style["list-item"]}>
+                            <i className="fas fa-comment"></i> Messages
+                        </li>
+                    </Link>
+
+                    <Link to="/logout">
+                        <li className={style["list-item"]}>
                             <i className="fas fa-sign-out-alt logout-icon"></i>{" "}
                             Logout
-                        </Link>
-                    </li>
+                        </li>
+                    </Link>
                 </ul>
             </div>
         </>
