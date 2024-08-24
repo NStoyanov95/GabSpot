@@ -21,6 +21,7 @@ function SendMessageModal({ closeMessageModal, user }) {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(formValue);
+        closeMessageModal();
     };
     return (
         <>
