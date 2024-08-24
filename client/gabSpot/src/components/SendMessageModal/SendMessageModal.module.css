@@ -1,0 +1,52 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modalContent {
+    background-color: #090909;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    box-shadow: 0 0px 30px -10px rgb(192 102 4);
+    text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.field input,
+.field textarea {
+    outline: none;
+    background-color: #ccc;
+    border-radius: 0.3em;
+}
+.field input {
+    padding: 0.2em;
+    color: rgb(77, 77, 77);
+}
+.field textarea {
+    padding: 2em;
+}
+.submitBtn {
+    padding: 0.5em 1.5em;
+    border-radius: 0.3em;
+    background-color: darkorange;
+    border: none;
+    font-weight: bold;
+}
