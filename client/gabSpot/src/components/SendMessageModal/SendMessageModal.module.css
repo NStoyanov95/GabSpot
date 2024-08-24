@@ -49,4 +49,8 @@
     background-color: darkorange;
     border: none;
     font-weight: bold;
+    cursor: pointer;
+}
+.submitBtn:hover {
+    background-color: rgb(194, 108, 4);
 }
