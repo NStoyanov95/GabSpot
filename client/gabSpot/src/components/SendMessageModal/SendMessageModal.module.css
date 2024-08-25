@@ -55,3 +55,8 @@
 .submitBtn:hover {
     background-color: rgb(194, 108, 4);
 }
+.loginBtn {
+    color: darkorange;
+    font-size: 1.1em;
+    text-decoration: underline;
+}

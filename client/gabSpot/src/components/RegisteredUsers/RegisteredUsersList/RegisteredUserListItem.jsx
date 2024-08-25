@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import style from "./RegisteredUserListItem.module.css";
 import SendMessageModal from "../../SendMessageModal/SendMessageModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../../../contexts/AuthContext";
 
 function RegisteredUsersListItem({ user }) {
+    const { isAuth } = useContext(AuthContext);
     const [isMessageModalShown, setIsMessageModalShown] = useState(false);
 
     const closeMessageModal = () => {
@@ -16,6 +18,7 @@ function RegisteredUsersListItem({ user }) {
                 <SendMessageModal
                     closeMessageModal={closeMessageModal}
                     user={user}
+                    isAuth={isAuth}
                 />
             )}
             <div className={style["user-list"]} key={user._id}>
