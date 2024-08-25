@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./SendMessageModal.module.css";
+import { sendMessage } from "../../services/messageService";
+import AuthContext from "../../contexts/AuthContext";
 
 function SendMessageModal({ closeMessageModal, user }) {
+    const { userId } = useContext(AuthContext);
+
     const [formValue, setFormValue] = useState({
-        to: user.username,
-        message: "",
+        from: userId,
+        to: user._id,
+        username: user.username,
+        content: "",
     });
 
     const changeHandler = (e) => {
@@ -18,10 +24,21 @@ function SendMessageModal({ closeMessageModal, user }) {
         e.stopPropagation();
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(formValue);
-        closeMessageModal();
+        if (formValue.content === "") {
+            return;
+        }
+        try {
+            console.log(formValue);
+
+            const res = await sendMessage(formValue);
+            console.log(res);
+
+            closeMessageModal();
+        } catch (error) {
+            console.log(error);
+        }
     };
     return (
         <>
@@ -30,22 +47,22 @@ function SendMessageModal({ closeMessageModal, user }) {
                     <h4>Send message</h4>
                     <form className={styles.form}>
                         <div className={styles.field}>
-                            <label htmlFor="to">To</label>
+                            <label htmlFor="username">To</label>
                             <input
                                 type="text"
-                                name="to"
-                                id="to"
+                                name="username"
+                                id="username"
                                 readOnly
-                                value={formValue.to}
+                                value={formValue.username}
                             />
                         </div>
                         <div className={styles.field}>
-                            <label htmlFor="message">Message</label>
+                            <label htmlFor="content">Message</label>
                             <textarea
                                 type="text"
-                                id="message"
-                                name="message"
-                                value={formValue.message}
+                                id="content"
+                                name="content"
+                                value={formValue.content}
                                 onChange={changeHandler}
                             />
                         </div>
