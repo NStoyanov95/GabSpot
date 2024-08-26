@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import style from "./Menu.module.css";
+import MessagesModal from "../../MessagesModal/MessagesModal";
 function Menu({ userId }) {
     return (
         <>
@@ -11,7 +12,7 @@ function Menu({ userId }) {
                         </li>
                     </Link>
 
-                    <Link to="/dashboard">
+                    <Link>
                         <li className={style["list-item"]}>
                             <i className="fas fa-comment"></i> Messages
                         </li>
@@ -25,6 +26,7 @@ function Menu({ userId }) {
                     </Link>
                 </ul>
             </div>
+            <MessagesModal />
         </>
     );
 }
