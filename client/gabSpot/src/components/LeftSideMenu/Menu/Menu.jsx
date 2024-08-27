@@ -26,7 +26,7 @@ function Menu({ userId }) {
                     </Link>
                 </ul>
             </div>
-            <MessagesModal />
+            {/* <MessagesModal /> */}
         </>
     );
 }

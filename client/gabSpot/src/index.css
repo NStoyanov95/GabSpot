@@ -46,7 +46,6 @@ input {
         font-size: 14px;
     }
     .dashboard {
-        display: flex;
         width: 90%;
     }
 }
