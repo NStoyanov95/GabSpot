@@ -12,22 +12,25 @@ function MessagesModal({ hideMessagesHandler }) {
         (async () => {
             const data = await getMessagesForUser(userId);
             setMessages(data);
-            console.log(data);
+            console.log(messages);
         })();
     }, []);
+
     return (
         <>
             <div className={styles.modalOverlay} onClick={hideMessagesHandler}>
                 <div className={styles.modalContent}>
-                    <h2>Messsages</h2>
-                    {messages.length < 0
-                        ? "No messages yet!"
-                        : messages.map((message) => (
-                              <MessageListItem
-                                  message={message}
-                                  key={message._id}
-                              />
-                          ))}
+                    <h2>Messages</h2>
+                    {messages.length <= 0 ? (
+                        <h4>No messages yet!</h4>
+                    ) : (
+                        messages.map((message) => (
+                            <MessageListItem
+                                message={message}
+                                key={message._id}
+                            />
+                        ))
+                    )}
                 </div>
             </div>
         </>
