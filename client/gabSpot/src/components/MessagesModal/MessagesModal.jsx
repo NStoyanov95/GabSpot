@@ -3,7 +3,8 @@ import styles from "./MessagesModal.module.css";
 import AuthContext from "../../contexts/AuthContext";
 import { getMessagesForUser } from "../../services/messageService";
 import MessageListItem from "./MessageListItem/MessageListItem";
-function MessagesModal() {
+
+function MessagesModal({ hideMessagesHandler }) {
     const { userId } = useContext(AuthContext);
     const [messages, setMessages] = useState([]);
 
@@ -16,7 +17,7 @@ function MessagesModal() {
     }, []);
     return (
         <>
-            <div className={styles.modalOverlay}>
+            <div className={styles.modalOverlay} onClick={hideMessagesHandler}>
                 <div className={styles.modalContent}>
                     <h2>Messsages</h2>
                     {messages.length < 0
