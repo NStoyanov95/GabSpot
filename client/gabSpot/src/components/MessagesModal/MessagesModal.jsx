@@ -12,7 +12,6 @@ function MessagesModal({ hideMessagesHandler }) {
         (async () => {
             const data = await getMessagesForUser(userId);
             setMessages(data);
-            console.log(messages);
         })();
     }, []);
 
