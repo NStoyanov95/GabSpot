@@ -25,12 +25,3 @@
     flex-direction: column;
     gap: 1em;
 }
-
-.messageContainer {
-    display: flex;
-    background-color: silver;
-    color: black;
-    padding: 1.5em;
-    border-radius: 0.3em;
-    align-items: baseline;
-}
