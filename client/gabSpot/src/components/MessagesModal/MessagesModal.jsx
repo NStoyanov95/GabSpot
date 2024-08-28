@@ -15,10 +15,13 @@ function MessagesModal({ hideMessagesHandler }) {
         })();
     }, []);
 
+    const stopPropagation = (e) => {
+        e.stopPropagation();
+    };
     return (
         <>
             <div className={styles.modalOverlay} onClick={hideMessagesHandler}>
-                <div className={styles.modalContent}>
+                <div className={styles.modalContent} onClick={stopPropagation}>
                     <h2>Messages</h2>
                     {messages.length <= 0 ? (
                         <h4>No messages yet!</h4>
