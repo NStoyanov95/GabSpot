@@ -26,9 +26,6 @@ function Header() {
                                     <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link to="/dashboard">Messages</Link>
-                                </li>
-                                <li>
                                     <Link to={`/profile/${userId}`}>
                                         Profile
                                     </Link>
