@@ -1,15 +1,21 @@
 import styles from "./ProfileCard.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getUserWithPosts } from "../../services/userService";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import SendMessageModal from "../SendMessageModal/SendMessageModal";
+import AuthContext from "../../contexts/AuthContext";
+import { useShowMessages } from "../../hooks/useMessage";
 
 function ProfileCard() {
+    const { isAuth } = useContext(AuthContext);
     const { userId } = useParams();
     const [user, setUser] = useState({});
     const [createdPost, setCreatedPost] = useState([]);
     const [likedPost, setLikedPost] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const { showMessages, showMessagesHandler, hideMessagesHandler } =
+        useShowMessages();
 
     useEffect(() => {
         (async () => {
@@ -33,6 +39,13 @@ function ProfileCard() {
                 <Loader />
             ) : (
                 <>
+                    {showMessages && (
+                        <SendMessageModal
+                            user={user}
+                            isAuth={isAuth}
+                            closeMessageModal={hideMessagesHandler}
+                        />
+                    )}
                     <div className={styles.profile}>
                         <img
                             src={user.profileImage}
@@ -43,6 +56,14 @@ function ProfileCard() {
                             {user.firstName} {user.lastName}
                         </h2>
                         <p className={styles.email}>{user.email}</p>
+                    </div>
+                    <div>
+                        <button
+                            onClick={showMessagesHandler}
+                            className={styles.messageBtn}
+                        >
+                            Send message
+                        </button>
                     </div>
                     <div className={styles.postsContainer}>
                         <div className={styles.section}>
