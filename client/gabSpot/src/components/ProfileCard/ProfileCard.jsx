@@ -6,9 +6,10 @@ import Loader from "../Loader/Loader";
 import SendMessageModal from "../SendMessageModal/SendMessageModal";
 import AuthContext from "../../contexts/AuthContext";
 import { useShowMessages } from "../../hooks/useMessage";
+import MessagesModal from "../MessagesModal/MessagesModal";
 
 function ProfileCard() {
-    const { isAuth } = useContext(AuthContext);
+    const { email, isAuth } = useContext(AuthContext);
     const { userId } = useParams();
     const [user, setUser] = useState({});
     const [createdPost, setCreatedPost] = useState([]);
@@ -31,7 +32,9 @@ function ProfileCard() {
                 console.log(error);
             }
         })();
-    }, []);
+    }, [userId]);
+
+    const isCurrentUser = email === user.email;
 
     return (
         <div className={styles.profileContainer}>
@@ -39,13 +42,20 @@ function ProfileCard() {
                 <Loader />
             ) : (
                 <>
-                    {showMessages && (
-                        <SendMessageModal
-                            user={user}
-                            isAuth={isAuth}
-                            closeMessageModal={hideMessagesHandler}
-                        />
-                    )}
+                    {isCurrentUser
+                        ? showMessages && (
+                              <MessagesModal
+                                  hideMessagesHandler={hideMessagesHandler}
+                              />
+                          )
+                        : showMessages && (
+                              <SendMessageModal
+                                  user={user}
+                                  isAuth={isAuth}
+                                  closeMessageModal={hideMessagesHandler}
+                              />
+                          )}
+
                     <div className={styles.profile}>
                         <img
                             src={user.profileImage}
@@ -62,7 +72,7 @@ function ProfileCard() {
                             onClick={showMessagesHandler}
                             className={styles.messageBtn}
                         >
-                            Send message
+                            {isCurrentUser ? "Show Messages" : "Send Message"}
                         </button>
                     </div>
                     <div className={styles.postsContainer}>
