@@ -22,6 +22,12 @@ function MessagesModal({ hideMessagesHandler }) {
         <>
             <div className={styles.modalOverlay} onClick={hideMessagesHandler}>
                 <div className={styles.modalContent} onClick={stopPropagation}>
+                    <div
+                        className={styles.closeBtn}
+                        onClick={hideMessagesHandler}
+                    >
+                        <button>X</button>
+                    </div>
                     <h2>Messages</h2>
                     {messages.length <= 0 ? (
                         <h4>No messages yet!</h4>

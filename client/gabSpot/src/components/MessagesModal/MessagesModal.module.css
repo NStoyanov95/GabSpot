@@ -24,4 +24,24 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    position: relative;
+}
+.closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    padding: 0.5em;
+}
+.closeBtn button {
+    padding: 0.5em;
+    background: none;
+    color: darkorange;
+    border-radius: 0.3em;
+    border: 2px solid darkorange;
+    cursor: pointer;
+}
+.closeBtn button:hover {
+    color: black;
+    background-color: darkorange;
 }
