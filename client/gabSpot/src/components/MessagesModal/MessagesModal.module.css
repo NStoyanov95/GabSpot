@@ -34,11 +34,11 @@
     padding: 0.5em;
 }
 .closeBtn button {
-    padding: 0.5em;
+    padding: 0.3em 0.5em;
     background: none;
     color: darkorange;
     border-radius: 0.3em;
-    border: 2px solid darkorange;
+    border: 1px solid darkorange;
     cursor: pointer;
 }
 .closeBtn button:hover {
