@@ -32,6 +32,9 @@
     border-radius: 0.3em;
     overflow: hidden;
 }
+.navigation-menu > .menu-list li:hover {
+    background-color: #373737;
+}
 .navigation-menu > .menu-list li a {
     padding: 0.5em 1em;
     font-size: 0.9em;
@@ -39,4 +42,7 @@
 .navigation-menu > .menu-list li.create-post {
     background-color: darkorange;
     color: black;
+}
+.navigation-menu > .menu-list li.create-post:hover {
+    background-color: rgb(213, 118, 2);
 }
