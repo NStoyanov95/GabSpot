@@ -71,7 +71,14 @@ input {
 ::-webkit-scrollbar {
     width: 2px;
 }
-
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
+    background-color: #000;
+}
 ::-webkit-scrollbar-track {
     background: #131415;
     border-radius: 10px;
